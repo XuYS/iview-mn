@@ -1,6 +1,6 @@
 <style scoped>
     .time{
-        font-size: 14px;
+        font-size: 18px;
         font-weight: bold;
     }
     .content{

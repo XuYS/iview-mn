@@ -4,7 +4,7 @@
         line-height: 200px;
         text-align: center;
         color: #fff;
-        font-size: 20px;
+        font-size: 24px;
         background: #506b9e;
     }
 </style>

@@ -152,15 +152,15 @@
         text-align: center;
     }
     .demo-spin-article h3{
-        font-size: 22px;
+        font-size: 26px;
     }
     .demo-spin-article address{
         color: #999;
         font-style: normal;
-        font-size: 14px;
+        font-size: 18px;
     }
     .demo-spin-article p {
-        font-size: 16px;
+        font-size: 18px;
     }
 </style>
 <template>
