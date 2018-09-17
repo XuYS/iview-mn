@@ -1,11 +1,11 @@
 {
-    "name": "iview-mn",
-    "version": "3.1.1-rc.5",
-    "title": "iView-mn",
-    "description": "This is a traditrinal Mongolian UI based on iview, A high quality UI components Library with Vue.js",
+    "name": "vue-mongol",
+    "version": "0.0.1-rc.4",
+    "title": "vue-mongol",
+    "description": "This is a traditrinal Mongolian UI. It is Based on iview.",
     "homepage": "http://www.mongol.top",
     "keywords": [
-        "iview-mn",
+        "vue-mongol",
         "vue",
         "vue.js",
         "component",
@@ -13,7 +13,7 @@
         "ui",
         "framework"
     ],
-    "main": "dist/iview-mn",
+    "main": "dist/vue-mongol",
     "typings": "dist/types/index.d.ts",
     "files": [
         "dist",
@@ -35,12 +35,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/XuYS/iview-mn"
+        "url": "https://github.com/XuYS/vue-mongol"
     },
-    "author": "iview-mn",
+    "author": "vue-mongol",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/XuYS/iview-mn/issues"
+        "url": "https://github.com/XuYS/vue-mongol/issues"
     },
     "dependencies": {
         "async-validator": "^1.8.2",

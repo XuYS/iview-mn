@@ -94,16 +94,22 @@
             padding: 8px 8px 0;
         }
         &-panel {
-            width: 240px;
+            width: 180px;
+            height: 240px;
             margin: 0 auto;
             box-sizing: initial;
             position: relative;
+            padding-bottom: 20px
         }
         &-hue-slider,
         &-alpha-slider {
             height: 10px;
             margin-top: 8px;
-            position: relative;
+            position: absolute;
+            width: 180px;
+            bottom: 6px;
+            left: 8px;
+            writing-mode: horizontal-tb;
         }
         &-colors {
             margin-top: 8px;

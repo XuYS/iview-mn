@@ -2,6 +2,9 @@
 
 .@{input-prefix-cls} {
     .input;
+    &[type="text"]{
+        display: table-cell;
+    }
     &-wrapper{
         display: inline-block;
         width: 100%;
@@ -12,14 +15,14 @@
         line-height: normal
     }
     &-icon {
-        width: 32px;
-        height: @input-height-base;
-        line-height: @input-height-base;
+        height: 32px;
+        width: @input-width-base;
+        line-height: @input-width-base;
         font-size: 16px;
         text-align: center;
         color: @subsidiary-color;
         position: absolute;
-        right: 0;
+        bottom: 0;
         z-index: 3;
     }
     &-hide-icon &-icon{
@@ -40,16 +43,16 @@
     }
 
     &-icon-normal + &{
-        padding-right: 32px;
+        padding-bottom: 32px;
     }
     // #554
     &-hide-icon &-icon-normal + &{
-        padding-right: @input-padding-horizontal;
+        padding-bottom: @input-padding-horizontal;
     }
 
     &-wrapper-large &-icon{
         font-size: 18px;
-        height: @input-height-large;
+        width: @input-width-large;
         line-height: @input-height-large;
     }
     &-wrapper-small &-icon{
@@ -74,7 +77,7 @@
         z-index: 1;
         i{
             font-size: 16px;
-            line-height: @input-height-base;
+            line-height: @input-width-base;
             color: @subsidiary-color;
         }
     }

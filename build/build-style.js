@@ -20,6 +20,8 @@ gulp.task('css', function () {
 gulp.task('fonts', function () {
     gulp.src('../src/styles/common/iconfont/fonts/*.*')
         .pipe(gulp.dest('../dist/styles/fonts'));
+    gulp.src('../src/styles/common/orhonfonts/fonts/*.*')
+        .pipe(gulp.dest('../dist/styles/fonts'));
 });
 
 gulp.task('default', ['css', 'fonts']);

@@ -14,7 +14,7 @@ module.exports = merge(webpackBaseConfig, {
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/dist/',
-        filename: 'iview-mn.js',
+        filename: 'vue-mongol.js',
         library: 'iview',
         libraryTarget: 'umd',
         umdNamedDefine: true

@@ -40,8 +40,8 @@
 
 .input() {
     display: inline-block;
-    width: 100%;
-    height: @input-height-base;
+    height: 100%;
+    width: @input-width-base;
     line-height: @line-height-base;
     padding: @input-padding-vertical-base @input-padding-horizontal;
     font-size: @font-size-small;
@@ -70,9 +70,9 @@
 
     // Reset height for textarea
     textarea& {
-        max-width: 100%;
-        height: auto;
-        min-height: @input-height-base;
+        max-height: 100%;
+        width: auto;
+        min-width: @input-width-base;
         vertical-align: bottom;
         font-size: @font-size-base;
     }
