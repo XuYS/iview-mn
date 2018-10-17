@@ -43,7 +43,7 @@
         }
 
         .@{select-prefix-cls}-arrow {
-            transform: rotate(180deg);
+            transform: rotate(-90deg);
             display: inline-block;
         }
     }
@@ -78,31 +78,31 @@
         .@{select-prefix-cls}-placeholder, .@{select-prefix-cls}-selected-value{
             display: block;
             height: @input-height-base - 2px;
-            line-height: @input-height-base - 2px;
+            line-height: @input-width-base - 2px;
             font-size: @font-size-small;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            padding-left: 8px;
-            padding-right: 24px;
+            padding-top: 8px;
+            padding-bottom: 24px;
         }
     }
 
     &-multiple &-selection{
-        padding: 0 24px 0 4px;
+        padding: 4px 0 24px 0;
         //min-height: @input-height-base;
 
         .@{select-prefix-cls}-placeholder{
             display: block;
             height: @input-height-base - 2px;
-            line-height: @input-height-base - 2px;
+            line-height: @input-width-base - 2px;
             color: @input-placeholder-color;
             font-size: @font-size-small;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            padding-left: 4px;
-            padding-right: 22px;
+            padding-top: 4px;
+            padding-bottom: 22px;
         }
     }
 
@@ -151,7 +151,7 @@
     &-input{
         display: inline-block;
         height: @input-height-base;
-        line-height: @input-height-base;
+        line-height: @input-width-base;
         padding: 0 24px 0 8px;
         font-size: @font-size-small;
         outline: none;
@@ -185,8 +185,9 @@
 
     &-multiple &-input{
         height: @input-height-base - 3px;
-        line-height: @input-height-base;
-        padding: 0 0 0 4px;
+        line-height: @input-width-base;
+        padding: 4px 0 0 0;
+        display: table-cell;
     }
 
     &-not-found{
@@ -202,16 +203,16 @@
     }
 
     &-multiple .@{css-prefix}tag{
-        height: 24px;
+        width: 24px;
         line-height: 22px;
-        margin: 3px 4px 3px 0;
+        margin: 0 3px 4px 3px;
         //i{
         //    top: 2px;
         //}
     }
 
     &-large&-multiple .@{css-prefix}tag{
-        height: 28px;
+        width: 28px;
         line-height: 26px;
         font-size: @font-size-base;
         i{
@@ -220,11 +221,11 @@
     }
 
     &-small&-multiple .@{css-prefix}tag{
-        height: 17px;
+        width: 17px;
         line-height: 15px;
         font-size: @font-size-small;
-        padding: 0 6px;
-        margin: 3px 4px 2px 0;
+        padding: 6px 0;
+        margin:  0 3px 4px 2px;
         i{
             top: 1px;
         }
@@ -265,8 +266,9 @@
         content: '\F171';
         color: @selected-color;
         position: absolute;
-        top: 2px;
-        right: 8px;
+        left: 50%;
+        bottom: 8px;
+        margin-left: -12px;
     }
 }
 

@@ -14,7 +14,7 @@
         props: {
             placement: {
                 type: String,
-                default: 'bottom-start'
+                default: 'left-start'
             },
             className: {
                 type: String
@@ -27,6 +27,7 @@
             return {
                 popper: null,
                 width: '',
+                height: '',
                 popperStatus: false,
                 tIndex: this.handleGetIndex()
             };
@@ -35,6 +36,7 @@
             styles () {
                 let style = {};
                 if (this.width) style.minWidth = `${this.width}px`;
+                if (this.height) style.minHeight = `${this.height}px`;
 
                 if (this.transfer) style['z-index'] = 1060 + this.tIndex;
 
@@ -74,6 +76,7 @@
                 // set a height for parent is Modal and Select's width is 100%
                 if (this.$parent.$options.name === 'iSelect') {
                     this.width = parseInt(getStyle(this.$parent.$el, 'width'));
+                    this.height = parseInt(getStyle(this.$parent.$el, 'height'));
                 }
                 this.tIndex = this.handleGetIndex();
             },

@@ -1,5 +1,8 @@
 <style lang="less">
     @import "../src/styles/index.less";
+    .mgl{
+        writing-mode: vertical-lr
+    }
 </style>
 <style lang="less" scoped>
 nav {
@@ -70,7 +73,9 @@ nav {
                 <li><router-link to="/drawer">Drawer</router-link></li>
             </ul>
         </nav>
-        <router-view></router-view>
+        <div class="ui-components mgl">
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 <script>

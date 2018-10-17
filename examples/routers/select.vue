@@ -1,10 +1,26 @@
 <template>
-    <div>
-        <Select v-model="model1" style="width:200px">
+    <div class="mgl">
+        <Select v-model="model1" style="height:200px">
             <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
         </Select>
 
-        <Select v-model="model2" multiple style="width:200px">
+        <Select v-model="model2" multiple placement="top" style="height:200px">
+            <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+        </Select>
+        <Select v-model="model2" multiple placement="bottom" style="height:200px">
+            <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+        </Select>
+        <Select v-model="model2" multiple placement="top-start" style="height:200px">
+            <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+        </Select>
+        <Select v-model="model2" multiple placement="bottom-start" style="height:200px">
+            <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+        </Select>
+        <Select v-model="model2" multiple transfer placement="left-start" style="height:200px">
+            <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+        </Select>
+
+        <Select v-model="model2" multiple clearable filterable placement="left" style="height:200px">
             <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
         </Select>
     </div>

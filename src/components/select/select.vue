@@ -202,9 +202,9 @@
             },
             placement: {
                 validator (value) {
-                    return oneOf(value, ['top', 'bottom', 'top-start', 'bottom-start', 'top-end', 'bottom-end']);
+                    return oneOf(value, ['top', 'bottom', 'top-start', 'bottom-start', 'top-end', 'bottom-end', 'left', 'left-start', 'left-end', 'right', 'right-start', 'right-end']);
                 },
-                default: 'bottom-start'
+                default: 'left-start'
             },
             transfer: {
                 type: Boolean,
