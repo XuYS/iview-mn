@@ -19,8 +19,8 @@
                 data3: this.getMockData(),
                 targetKeys3: this.getTargetKeys(),
                 listStyle: {
-                    width: '250px',
-                    height: '300px'
+                    width: '500px',
+                    height: '500px'
                 }
             }
         },

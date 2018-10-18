@@ -1,11 +1,15 @@
 <template>
     <div :class="prefixCls + '-operation'">
-        <i-button type="primary" size="small" :disabled="!rightActive" @click.native="moveToLeft">
-            <Icon type="ios-arrow-back"></Icon> <span>{{ operations[0] }}</span>
-        </i-button>
-        <i-button type="primary" size="small" :disabled="!leftActive" @click.native="moveToRight">
-            <span>{{ operations[1] }}</span> <Icon type="ios-arrow-forward"></Icon>
-        </i-button>
+        <div :class="prefixCls + '-operation-top'">
+            <i-button type="primary" size="small" :disabled="!rightActive" @click.native="moveToLeft">
+                <Icon type="ios-arrow-back"></Icon> <span>{{ operations[0] }}</span>
+            </i-button>
+        </div>
+        <div :class="prefixCls + '-operation-bottom'">
+            <i-button type="primary" size="small" :disabled="!leftActive" @click.native="moveToRight">
+                <span>{{ operations[1] }}</span> <Icon type="ios-arrow-forward"></Icon>
+            </i-button>
+        </div>
     </div>
 </template>
 <script>

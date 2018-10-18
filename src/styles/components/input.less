@@ -7,7 +7,8 @@
     }
     &-wrapper{
         display: inline-block;
-        width: 100%;
+        // width: 100%;
+        height: 100%;
         position: relative;
         vertical-align: middle;
 
@@ -56,9 +57,10 @@
         line-height: @input-height-large;
     }
     &-wrapper-small &-icon{
-        width: 24px;
+        width: @input-height-small;
         font-size: 14px;
-        height: @input-height-small;
+        height: 24px;
+        padding-left: 10px;
         line-height: @input-height-small;
 
         //+ .@{input-prefix-cls} {

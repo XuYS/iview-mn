@@ -37,7 +37,7 @@
         props: {
             type: {
                 validator (value) {
-                    return oneOf(value, ['default', 'primary', 'dashed', 'text', 'info', 'success', 'warning', 'error']);
+                    return oneOf(value, ['default', 'primary', 'dashed', 'text', 'info', 'success', 'warning', 'error', 'ghost']);
                 },
                 default: 'default'
             },
