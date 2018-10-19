@@ -7,6 +7,7 @@
     position: relative;
     outline: none;
     top: 100px;
+    writing-mode: horizontal-tb;
 
     &-hidden {
         display: none !important;
@@ -34,6 +35,7 @@
     }
 
     &-content {
+        writing-mode: vertical-lr;
         position: relative;
         background-color: #fff;
         border: 0;
@@ -59,9 +61,14 @@
 
     &-header {
         .content-header;
+        padding-top:39px;
+        border-bottom: 0px solid #e9eaec;
+        border-right: 1px solid #e9eaec;
     }
 
     &-close {
+        width: 30px;
+        left: 16px;
         z-index: 1;
         .content-close(1px, 31px);
     }
@@ -73,11 +80,11 @@
     }
 
     &-footer {
-        border-top: 1px solid @border-color-split;
+        border-left: 1px solid @border-color-split;
         padding: 18px 12px 18px 12px;
         text-align: right;
         button + button {
-            margin-left: 8px;
+            margin-left: 0;
             margin-bottom: 0;
         }
     }

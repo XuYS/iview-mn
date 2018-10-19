@@ -55,6 +55,7 @@
                 h(Operation, {
                     props: {
                         prefixCls: this.prefixCls,
+                        height: this.listStyle.height || 210,
                         operations: this.operations,
                         leftActive: this.leftValidKeysCount > 0,
                         rightActive: this.rightValidKeysCount > 0
