@@ -24915,7 +24915,7 @@ exports.default = {
         }, vNodes), h(_operation2.default, {
             props: {
                 prefixCls: this.prefixCls,
-                height: this.listStyle.height || 210,
+                height: this.listStyle.height || '210px',
                 operations: this.operations,
                 leftActive: this.leftValidKeysCount > 0,
                 rightActive: this.rightValidKeysCount > 0
@@ -26914,7 +26914,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '0.0.1-rc.9',
+    version: '0.0.1-rc.10',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,
