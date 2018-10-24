@@ -10,7 +10,6 @@
         <transition name="slide-up" v-else>
             <Drop
                 v-show="opened"
-                placement="bottom"
                 ref="drop"
                 :style="dropStyle"><ul :class="[prefixCls + '-drop-list']"><slot></slot></ul>
             </Drop>
