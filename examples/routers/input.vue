@@ -139,8 +139,13 @@
         <!--<br><br>-->
         <!--<Input v-model="value" search enter-button="Search" style="width: 300px" @on-search="hs" />-->
     <!--</div>-->
-    <div style="width: 200px">
-        <Input v-model="value7" type="textarea" :autosize="true" placeholder="Enter something..."></Input>
+    <div style="width: 800px">
+        <Input v-model="value" placeholder="Enter something..." style="width: 300px"></Input>
+        <Input v-model="value" style="font-size: 20px;">
+            <span slot="prepend" style="font-size:20px;"><Icon type="iphone"></Icon></span>
+            <Button slot="append" icon="ios-search"></Button>
+        </Input>
+        <Input v-model="value7" type="textarea" :autosize="{minRows: 2,maxRows: 10}" placeholder="Enter something..."></Input>
     </div>
 </template>
 <script>

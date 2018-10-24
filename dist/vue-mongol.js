@@ -1698,8 +1698,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_input_vue__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_input_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_input_vue__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_input_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_input_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_0cd52da9_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_input_vue__ = __webpack_require__(319);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_0cd52da9_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_input_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_0cd52da9_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_input_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_69fb02c5_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_input_vue__ = __webpack_require__(319);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_69fb02c5_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_input_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_69fb02c5_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_input_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(0);
 /* script */
 
@@ -1717,8 +1717,8 @@ var __vue_module_identifier__ = null
 
 var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_input_vue___default.a,
-  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_0cd52da9_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_input_vue__["render"],
-  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_0cd52da9_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_input_vue__["staticRenderFns"],
+  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_69fb02c5_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_input_vue__["render"],
+  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_69fb02c5_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_input_vue__["staticRenderFns"],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -8172,9 +8172,9 @@ var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
 var _assist = __webpack_require__(3);
 
-var _calcTextareaHeight = __webpack_require__(312);
+var _calcTextareaWidth = __webpack_require__(312);
 
-var _calcTextareaHeight2 = _interopRequireDefault(_calcTextareaHeight);
+var _calcTextareaWidth2 = _interopRequireDefault(_calcTextareaWidth);
 
 var _emitter = __webpack_require__(4);
 
@@ -8371,7 +8371,8 @@ exports.default = {
             var minRows = autosize.minRows;
             var maxRows = autosize.maxRows;
 
-            this.textareaStyles = (0, _calcTextareaHeight2.default)(this.$refs.textarea, minRows, maxRows);
+            this.textareaStyles = (0, _calcTextareaWidth2.default)(this.$refs.textarea, minRows, maxRows);
+            console.log(this.textareaStyles);
         },
         focus: function focus() {
             if (this.type === 'textarea') {
@@ -26914,7 +26915,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '0.0.1-rc.10',
+    version: '0.0.1-rc.11',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,
@@ -28750,7 +28751,7 @@ var _newArrowCheck2 = __webpack_require__(1);
 
 var _newArrowCheck3 = _interopRequireDefault(_newArrowCheck2);
 
-exports.default = calcTextareaHeight;
+exports.default = calcTextareaWidth;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28799,11 +28800,12 @@ function calculateNodeStyling(node) {
     return nodeInfo;
 }
 
-function calcTextareaHeight(uiTextNode) {
+function calcTextareaWidth(uiTextNode) {
     var minRows = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
     var maxRows = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
     var useCache = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
 
+    var oldWidth = uiTextNode.scrollWidth;
     if (!hiddenTextarea) {
         hiddenTextarea = document.createElement('textarea');
         document.body.appendChild(hiddenTextarea);
@@ -28824,46 +28826,48 @@ function calcTextareaHeight(uiTextNode) {
     hiddenTextarea.setAttribute('style', String(sizingStyle) + ';' + HIDDEN_TEXTAREA_STYLE);
     hiddenTextarea.value = uiTextNode.value || uiTextNode.placeholder || '';
 
-    var minHeight = _minSafeInteger2.default;
-    var maxHeight = _maxSafeInteger2.default;
-    var height = hiddenTextarea.scrollHeight;
+    var minWidth = _minSafeInteger2.default;
+    var maxWidth = _maxSafeInteger2.default;
+    var width = hiddenTextarea.scrollHeight;
     var overflowY = void 0;
 
     if (boxSizing === 'border-box') {
-        height = height + borderSize;
+        width = width + borderSize;
     } else if (boxSizing === 'content-box') {
-        height = height - paddingSize;
+        width = width - paddingSize;
     }
 
     if (minRows !== null || maxRows !== null) {
         hiddenTextarea.value = ' ';
-        var singleRowHeight = hiddenTextarea.scrollHeight - paddingSize;
+        var singleRowWidth = hiddenTextarea.scrollHeight - paddingSize;
         if (minRows !== null) {
-            minHeight = singleRowHeight * minRows;
+            minWidth = singleRowWidth * minRows;
             if (boxSizing === 'border-box') {
-                minHeight = minHeight + paddingSize + borderSize;
+                minWidth = minWidth + paddingSize + borderSize;
             }
-            height = Math.max(minHeight, height);
+            width = Math.max(minWidth, width);
         }
         if (maxRows !== null) {
-            maxHeight = singleRowHeight * maxRows;
+            maxWidth = singleRowWidth * maxRows;
             if (boxSizing === 'border-box') {
-                maxHeight = maxHeight + paddingSize + borderSize;
+                maxWidth = maxWidth + paddingSize + borderSize;
             }
-            overflowY = height > maxHeight ? '' : 'hidden';
-            height = Math.min(maxHeight, height);
+            overflowY = width > maxWidth ? '' : 'hidden';
+            width = Math.min(maxWidth, width);
         }
     }
 
     if (!maxRows) {
         overflowY = 'hidden';
     }
-
+    if (width < oldWidth) width = oldWidth;
     return {
-        height: String(height) + 'px',
-        minHeight: String(minHeight) + 'px',
-        maxHeight: String(maxHeight) + 'px',
-        overflowY: overflowY
+        height: '100%',
+        width: String(width) + 'px',
+        minWidth: String(minWidth) + 'px',
+        maxWidth: String(maxWidth) + 'px',
+        overflowX: overflowY,
+        resize: 'horizontal'
     };
 }
 

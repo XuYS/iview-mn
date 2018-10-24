@@ -99,7 +99,7 @@
 
 .input-group(@inputClass) {
     display: table;
-    width: 100%;
+    height: 100%;
     border-collapse: separate;
     position: relative;
     font-size: @font-size-small;
@@ -148,20 +148,20 @@
         border-color: transparent;
         background-color: transparent;
         color: inherit;
-        margin: -(@input-padding-vertical-base + 2) (-@input-padding-horizontal);
+        // margin: -(@input-padding-vertical-base + 2) (-@input-padding-horizontal);
     }
 
     &-prepend,
     &-append
     {
-        width: 1px; // To make addon/wrap as small as possible
+        height: 1px; // To make addon/wrap as small as possible
         white-space: nowrap;
         vertical-align: middle;
     }
 
     .@{inputClass} {
         width: 100%;
-        float: left;
+        // float: left;
         margin-bottom: 0;
         position: relative;
         z-index: 2;
@@ -170,7 +170,7 @@
     &-prepend,
     &-append
     {
-        padding: @input-padding-vertical-base @input-padding-horizontal;
+        // padding: @input-padding-vertical-base @input-padding-horizontal;
         font-size: inherit;
         font-weight: normal;
         line-height: 1;
@@ -201,32 +201,32 @@
     > .@{inputClass}:first-child,
     &-prepend
     {
+        border-bottom-left-radius: 0 !important;
         border-bottom-right-radius: 0 !important;
-        border-top-right-radius: 0 !important;
 
         // Reset Select's style in addon
         .@{css-prefix}-select .@{css-prefix}-select-selection {
+            border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
-            border-top-right-radius: 0;
         }
     }
 
     &-prepend {
-        border-right: 0;
+        border-bottom: 0;
     }
     &-append {
-        border-left: 0;
+        border-top: 0;
     }
 
     > .@{inputClass}:last-child,
     &-append
     {
-        border-bottom-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
         border-top-left-radius: 0 !important;
 
         // Reset Select's style in addon
         .@{css-prefix}-select .@{css-prefix}-select-selection {
-            border-bottom-left-radius: 0;
+            border-top-right-radius: 0;
             border-top-left-radius: 0;
         }
     }
@@ -261,9 +261,9 @@
         }
     }
     &-prepend {
-        border-right: 0;
+        border-bottom: 0;
     }
     &-append {
-        border-left: 0;
+        border-top: 0;
     }
 }

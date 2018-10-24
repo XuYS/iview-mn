@@ -68,7 +68,7 @@
 </template>
 <script>
     import { oneOf, findComponentUpward } from '../../utils/assist';
-    import calcTextareaHeight from '../../utils/calcTextareaHeight';
+    import calcTextareaWidth from '../../utils/calcTextareaWidth';
     import Emitter from '../../mixins/emitter';
 
     const prefixCls = 'ivu-input';
@@ -273,7 +273,8 @@
                 const minRows = autosize.minRows;
                 const maxRows = autosize.maxRows;
 
-                this.textareaStyles = calcTextareaHeight(this.$refs.textarea, minRows, maxRows);
+                this.textareaStyles = calcTextareaWidth(this.$refs.textarea, minRows, maxRows);
+                console.log(this.textareaStyles)
             },
             focus () {
                 if (this.type === 'textarea') {
