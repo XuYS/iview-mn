@@ -25,7 +25,7 @@ nav {
                 <li><router-link to="/anchor">Anchor</router-link></li>
                 <li><router-link to="/grid">Grid</router-link></li>
                 <li><router-link to="/button">Button</router-link></li>
-                <li><router-link to="/input">Input</router-link></li>
+                <li><router-link to="/input"><span style="color:white;background-color:green;">Input</span></router-link></li>
                 <li><router-link to="/radio">Radio</router-link></li>
                 <li><router-link to="/checkbox">Checkbox</router-link></li>
                 <li><router-link to="/steps">Steps</router-link></li>
@@ -39,9 +39,9 @@ nav {
                 <li><router-link to="/upload">Upload</router-link></li>
                 <li><router-link to="/collapse">Collapse</router-link></li>
                 <li><router-link to="/carousel">Carousel</router-link></li>
-                <li><router-link to="/card">Card</router-link></li>
-                <li><router-link to="/tree">Tree</router-link></li>
-                <li><router-link to="/rate">Rate</router-link></li>
+                <li><router-link to="/card"><span style="color:white;background-color:green;">Card</span></router-link></li>
+                <li><router-link to="/tree"><span style="color:white;background-color:green;">Tree</span></router-link></li>
+                <li><router-link to="/rate"><span style="color:white;background-color:green;">Rate</span></router-link></li>
                 <li><router-link to="/circle">Circle</router-link></li>
                 <li><router-link to="/tabs">Tabs</router-link></li>
                 <li><router-link to="/tooltip">Tooltip</router-link></li>
@@ -49,18 +49,18 @@ nav {
                 <li><router-link to="/slider">Slider</router-link></li>
                 <li><router-link to="/dropdown">Dropdown</router-link></li>
                 <li><router-link to="/breadcrumb">Breadcrumb</router-link></li>
-                <li><router-link to="/menu">Menu</router-link></li>
+                <li><router-link to="/menu"><span style="color:white;background-color:green;">Menu</span></router-link></li>
                 <li><router-link to="/spin">Spin</router-link></li>
                 <li><router-link to="/cascader">Cascader</router-link></li>
-                <li><router-link to="/select">Select</router-link></li>
+                <li><router-link to="/select"><span style="color:white;background-color:green;">Select</span></router-link></li>
                 <li><router-link to="/backtop">Backtop</router-link></li>
                 <li><router-link to="/page">Page</router-link></li>
-                <li><router-link to="/transfer">Transfer</router-link></li>
+                <li><router-link to="/transfer"><span style="color:white;background-color:green;">Transfer</span></router-link></li>
                 <li><router-link to="/date">Date</router-link></li>
                 <li><router-link to="/form">Form</router-link></li>
                 <li><router-link to="/table">Table</router-link></li>
                 <li><router-link to="/loading-bar">LoadingBar</router-link></li>
-                <li><router-link to="/modal">Modal</router-link></li>
+                <li><router-link to="/modal"><span style="color:white;background-color:green;">Modal</span></router-link></li>
                 <li><router-link to="/message">Message</router-link></li>
                 <li><router-link to="/notice">Notice</router-link></li>
                 <li><router-link to="/avatar">Avatar</router-link></li>
