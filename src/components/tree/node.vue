@@ -85,7 +85,7 @@
                     `${prefixCls}-arrow`,
                     {
                         [`${prefixCls}-arrow-disabled`]: this.data.disabled,
-                        [`${prefixCls}-arrow-open`]: this.data.expand
+                        [`${prefixCls}-arrow-open`]: !this.data.expand
                     }
                 ];
             },
