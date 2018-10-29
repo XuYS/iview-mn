@@ -133,7 +133,7 @@
                 const labelWidth = this.labelWidth === 0 || this.labelWidth ? this.labelWidth : this.form.labelWidth;
 
                 if (labelWidth || labelWidth === 0) {
-                    style.width = `${labelWidth}px`;
+                    style.height = `${labelWidth}px`;
                 }
                 return style;
             },
@@ -142,7 +142,7 @@
                 const labelWidth = this.labelWidth === 0 || this.labelWidth ? this.labelWidth : this.form.labelWidth;
 
                 if (labelWidth || labelWidth === 0) {
-                    style.marginLeft = `${labelWidth}px`;
+                    style.marginTop = `${labelWidth}px`;
                 }
                 return style;
             }

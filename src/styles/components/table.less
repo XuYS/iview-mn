@@ -99,17 +99,18 @@
     th, td
     {
         min-width: 0;
-        height: 48px;
+        width: 48px;
         box-sizing: border-box;
         text-align: left;
         text-overflow: ellipsis;
         vertical-align: middle;
         //position: relative;
+        border-right: 1px solid @border-color-split;
         border-bottom: 1px solid @border-color-split;
     }
 
     th {
-        height: 40px;
+        width: 40px;
         white-space: nowrap;
         overflow: hidden;
         background-color: @table-thead-bg;
@@ -143,8 +144,9 @@
         }
     }
     &-cell{
-        padding-left: 18px;
-        padding-right: 18px;
+        // padding-left: 18px;
+        // padding-right: 18px;
+        padding: 18px 0;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: normal;
