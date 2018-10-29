@@ -3,13 +3,13 @@
 
 .@{form-prefix-cls} {
     .@{form-item-prefix-cls}-label {
-        text-align: right;
+        text-align: left;
         vertical-align: middle;
         float: left;
         font-size: @font-size-small;
         color: @text-color;
         line-height: 1;
-        padding: 10px 12px 10px 0;
+        padding: 0 10px 12px;
         box-sizing: border-box;
     }
     &-label-left .@{form-item-prefix-cls}-label {
@@ -30,7 +30,7 @@
 }
 
 .@{form-item-prefix-cls} {
-    margin-bottom: 24px;
+    margin-right: 24px;
     vertical-align: top;
     .clearfix();
     &-content {

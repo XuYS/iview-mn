@@ -1,8 +1,8 @@
 <template>
     <table cellspacing="0" cellpadding="0" border="0" :style="styles">
         <colgroup>
-            <col v-for="(column, index) in columns" :width="setCellWidth(column)">
-            <col v-if="$parent.showVerticalScrollBar" :width="$parent.scrollBarWidth"/>
+            <col v-for="(column, index) in columns" :height="setCellWidth(column)">
+            <col v-if="$parent.showVerticalScrollBar" :height="$parent.scrollBarWidth"/>
         </colgroup>
         <thead>
             <tr v-for="(cols, rowIndex) in headRows">
