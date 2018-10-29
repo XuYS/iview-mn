@@ -26,7 +26,7 @@ nav {
                 <li><router-link to="/grid">Grid</router-link></li>
                 <li><router-link to="/button">Button</router-link></li>
                 <li><router-link to="/input"><span style="color:white;background-color:green;">Input</span></router-link></li>
-                <li><router-link to="/radio">Radio</router-link></li>
+                <li><router-link to="/radio"><span style="color:white;background-color:green;">Radio</span></router-link></li>
                 <li><router-link to="/checkbox">Checkbox</router-link></li>
                 <li><router-link to="/steps">Steps</router-link></li>
                 <li><router-link to="/timeline">Timeline</router-link></li>
@@ -48,7 +48,7 @@ nav {
                 <li><router-link to="/poptip">Poptip</router-link></li>
                 <li><router-link to="/slider">Slider</router-link></li>
                 <li><router-link to="/dropdown">Dropdown</router-link></li>
-                <li><router-link to="/breadcrumb">Breadcrumb</router-link></li>
+                <li><router-link to="/breadcrumb"><span style="color:white;background-color:green;">Breadcrumb</span></router-link></li>
                 <li><router-link to="/menu"><span style="color:white;background-color:green;">Menu</span></router-link></li>
                 <li><router-link to="/spin">Spin</router-link></li>
                 <li><router-link to="/cascader">Cascader</router-link></li>
