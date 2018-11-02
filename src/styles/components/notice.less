@@ -2,14 +2,15 @@
 @icon-prefix-cls: ~"@{css-prefix}icon";
 
 @notice-width: 335px;
-@notice-padding: 16px;
+@notice-padding: 16px 20px 16px 16px;
 @notice-margin-bottom: 10px;
 
 .@{notice-prefix-cls} {
-    width: @notice-width;
+    // width: @notice-width;
     margin-right: 24px;
     position: fixed;
     z-index: @zindex-notification;
+    writing-mode: vertical-lr;
 
     &-content-with-icon{
         margin-left: 51px;
@@ -19,7 +20,7 @@
     }
 
     &-notice {
-        margin-bottom: @notice-margin-bottom;
+        margin-right: @notice-margin-bottom;
         padding: @notice-padding;
         // border: 1px solid @border-color-split;
         border-radius: @border-radius-small;
@@ -31,7 +32,7 @@
 
         &-close {
             position: absolute;
-            right: 8px;
+            right: 3px;
             top: 15px;
             color: #999;
             outline: none;

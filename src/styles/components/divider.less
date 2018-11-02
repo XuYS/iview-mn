@@ -6,19 +6,19 @@
 
     &, // for compatiable
     &-vertical {
-        margin: 0 8px;
+        margin: 8px 0;
         display: inline-block;
-        height: 0.9em;
-        width: 1px;
+        height: 1px;
+        width: 0.9em;
         vertical-align: middle;
         position: relative;
-        top: -0.06em;
+        left: -0.06em;
     }
     &-horizontal {
         display: block;
-        height: 1px;
-        width: 100%;
-        margin: 24px 0;
+        height: 100%;
+        width: 1px;
+        margin: 0 24px;
         clear: both;
     }
     &-horizontal&-with-text-center,
@@ -31,16 +31,17 @@
         font-weight: 500;
         color: @title-color;
         font-size: @font-size-large;
-        margin: 16px 0;
+        margin: 0 16px;
         &:before,
         &:after {
             content: '';
             display: table-cell;
             position: relative;
-            top: 50%;
-            width: 50%;
-            border-top: 1px solid @border-color-split;
-            transform: translateY(50%);
+            left: 50%;
+            height: 50%;
+            width: 1px;
+            border-left: 1px solid @border-color-split;
+            transform: translateX(50%);
         }
     }
 
@@ -49,35 +50,35 @@
         font-size: @font-size-base;
         .@{divider-prefix-cls}-inner-text {
             display: inline-block;
-            padding: 0 10px;
+            padding: 10px 0;
         }
     }
 
     &-horizontal&-with-text-left {
         &:before {
-            top: 50%;
-            width: 5%;
+            left: 50%;
+            height: 5%;
         }
         &:after {
-            top: 50%;
-            width: 95%;
+            left: 50%;
+            height: 95%;
         }
     }
 
     &-horizontal&-with-text-right {
         &:before {
-            top: 50%;
-            width: 95%;
+            left: 50%;
+            height: 95%;
         }
         &:after {
-            top: 50%;
-            width: 5%;
+            left: 50%;
+            height: 5%;
         }
     }
 
     &-inner-text {
         display: inline-block;
-        padding: 0 24px;
+        padding: 24px 0;
     }
 
     &-dashed {

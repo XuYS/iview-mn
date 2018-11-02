@@ -82,6 +82,13 @@
                     style['margin-top'] = `${this.offset[0]}px`;
                     style['margin-right'] = `${this.offset[1]}px`;
                 }
+                if (this.text !== ''){
+                    style['writing-mode'] = 'vertical-lr';
+                    style['padding'] = '6px 0';
+                }else{
+                    style['writing-mode'] = 'horizontal-tb';
+                    if(!this.dot) style['padding'] = '0 6px';
+                }
                 return style;
             },
             finalCount () {

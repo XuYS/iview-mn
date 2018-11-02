@@ -25,7 +25,7 @@
         </div>
         <div class="ivu-cell-arrow" v-if="to">
             <slot name="arrow">
-                <Icon type="ios-arrow-forward"></Icon>
+                <Icon type="ios-arrow-down"></Icon>
             </slot>
         </div>
     </div>

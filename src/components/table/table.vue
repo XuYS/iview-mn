@@ -37,7 +37,7 @@
                     </tbody>
                 </table>
             </div>
-            <!-- <div :class="[prefixCls + '-fixed']" :style="fixedTableStyle" v-if="isLeftFixed">
+            <div :class="[prefixCls + '-fixed']" :style="fixedTableStyle" v-if="isLeftFixed">
                 <div :class="fixedHeaderClasses" v-if="showHeader">
                     <table-head
                         fixed="left"
@@ -60,8 +60,8 @@
                         :columns-width="columnsWidth"
                         :obj-data="objData"></table-body>
                 </div>
-            </div> -->
-            <!-- <div :class="[prefixCls + '-fixed-right']" :style="fixedRightTableStyle" v-if="isRightFixed">
+            </div>
+            <div :class="[prefixCls + '-fixed-right']" :style="fixedRightTableStyle" v-if="isRightFixed">
                 <div :class="fixedHeaderClasses" v-if="showHeader">
                     <table-head
                         fixed="right"
@@ -84,8 +84,8 @@
                         :columns-width="columnsWidth"
                         :obj-data="objData"></table-body>
                 </div>
-            </div> -->
-            <!-- <div :class="[prefixCls + '-fixed-right-header']" :style="fixedRightHeaderStyle" v-if="isRightFixed"></div> -->
+            </div>
+            <div :class="[prefixCls + '-fixed-right-header']" :style="fixedRightHeaderStyle" v-if="isRightFixed"></div>
             <div :class="[prefixCls + '-footer']" v-if="showSlotFooter" ref="footer"><slot name="footer"></slot></div>
         </div>
         <Spin fix size="large" v-if="loading">
@@ -253,10 +253,11 @@
             },
             styles () {
                 let style = {};
-                if (this.height) {
-                    const height = parseInt(this.height);
-                    style.height = `${height}px`;
-                }
+                // if (this.height) {
+                //     const height = parseInt(this.height);
+                //     style.height = `${height}px`;
+                // }
+                style.height = `100%`;
                 if (this.width) style.width = `${this.width}px`;
                 return style;
             },
@@ -280,7 +281,6 @@
                     let width = '';
                     width = this.tableWidth;
                     style.width = `${width}px`;
-                    style.height = `${this.$refs.body ? this.$refs.body.offsetHeight : 0}px`
                 }
                 return style;
             },

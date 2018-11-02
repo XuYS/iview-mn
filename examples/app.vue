@@ -19,58 +19,11 @@ nav {
     <div class="container">
         <nav>
             <ul>
-                <li><router-link to="/split">Split</router-link></li>
-                <li><router-link to="/layout">Layout</router-link></li>
-                <li><router-link to="/affix">Affix</router-link></li>
-                <li><router-link to="/anchor">Anchor</router-link></li>
-                <li><router-link to="/grid">Grid</router-link></li>
-                <li><router-link to="/button">Button</router-link></li>
-                <li><router-link to="/input"><span style="color:white;background-color:green;">Input</span></router-link></li>
-                <li><router-link to="/radio"><span style="color:white;background-color:green;">Radio</span></router-link></li>
-                <li><router-link to="/checkbox">Checkbox</router-link></li>
-                <li><router-link to="/steps">Steps</router-link></li>
-                <li><router-link to="/timeline">Timeline</router-link></li>
-                <li><router-link to="/switch">Switch</router-link></li>
-                <li><router-link to="/alert">Alert</router-link></li>
-                <li><router-link to="/badge">Badge</router-link></li>
-                <li><router-link to="/tag">Tag</router-link></li>
-                <li><router-link to="/input-number">InputNumber</router-link></li>
-                <li><router-link to="/progress">Progress</router-link></li>
-                <li><router-link to="/upload">Upload</router-link></li>
-                <li><router-link to="/collapse">Collapse</router-link></li>
-                <li><router-link to="/carousel">Carousel</router-link></li>
-                <li><router-link to="/card"><span style="color:white;background-color:green;">Card</span></router-link></li>
-                <li><router-link to="/tree"><span style="color:white;background-color:green;">Tree</span></router-link></li>
-                <li><router-link to="/rate"><span style="color:white;background-color:green;">Rate</span></router-link></li>
-                <li><router-link to="/circle">Circle</router-link></li>
-                <li><router-link to="/tabs">Tabs</router-link></li>
-                <li><router-link to="/tooltip">Tooltip</router-link></li>
-                <li><router-link to="/poptip">Poptip</router-link></li>
-                <li><router-link to="/slider">Slider</router-link></li>
-                <li><router-link to="/dropdown">Dropdown</router-link></li>
-                <li><router-link to="/breadcrumb"><span style="color:white;background-color:green;">Breadcrumb</span></router-link></li>
-                <li><router-link to="/menu"><span style="color:white;background-color:green;">Menu</span></router-link></li>
-                <li><router-link to="/spin">Spin</router-link></li>
-                <li><router-link to="/cascader">Cascader</router-link></li>
-                <li><router-link to="/select"><span style="color:white;background-color:green;">Select</span></router-link></li>
-                <li><router-link to="/backtop">Backtop</router-link></li>
-                <li><router-link to="/page">Page</router-link></li>
-                <li><router-link to="/transfer"><span style="color:white;background-color:green;">Transfer</span></router-link></li>
-                <li><router-link to="/date">Date</router-link></li>
-                <li><router-link to="/form">Form</router-link></li>
-                <li><router-link to="/table">Table</router-link></li>
-                <li><router-link to="/loading-bar">LoadingBar</router-link></li>
-                <li><router-link to="/modal"><span style="color:white;background-color:green;">Modal</span></router-link></li>
-                <li><router-link to="/message">Message</router-link></li>
-                <li><router-link to="/notice">Notice</router-link></li>
-                <li><router-link to="/avatar">Avatar</router-link></li>
-                <li><router-link to="/color-picker">ColorPicker</router-link></li>
-                <li><router-link to="/auto-complete">AutoComplete</router-link></li>
-                <li><router-link to="/scroll">Scroll</router-link></li>
-                <li><router-link to="/divider">Divider</router-link></li>
-                <li><router-link to="/time">Time</router-link></li>
-                <li><router-link to="/cell">Cell</router-link></li>
-                <li><router-link to="/drawer">Drawer</router-link></li>
+                <li v-for="(item,index) in moduleList" :key="index" >
+                    <router-link :to="item.to">
+                        <span :style="item.accomplish?'color:white;background-color:green;':''">{{item.name}}</span>
+                    </router-link>
+                </li>
             </ul>
         </nav>
         <div class="ui-components mgl">
@@ -82,7 +35,60 @@ nav {
     module.exports = {
         data: function() {
             return {
-
+                moduleList:[
+                    {name:'Split',to:'/split',accomplish:false,},
+                    {name:'Layout',to:'/layout',accomplish:false,},
+                    {name:'Affix',to:'/affix',accomplish:false,},
+                    {name:'Anchor',to:'/anchor',accomplish:false,},
+                    {name:'Grid',to:'/grid',accomplish:false,},
+                    {name:'Button',to:'/button',accomplish:false,},
+                    {name:'Input',to:'/input',accomplish:true,},
+                    {name:'Radio',to:'/radio',accomplish:true,},
+                    {name:'Checkbox',to:'/checkbox',accomplish:true,},
+                    {name:'Steps',to:'/steps',accomplish:false,},
+                    {name:'Timeline',to:'/timeline',accomplish:false,},
+                    {name:'Switch',to:'/switch',accomplish:false,},
+                    {name:'Alert',to:'/alert',accomplish:true,},
+                    {name:'Badge',to:'/badge',accomplish:true,},
+                    {name:'Tag',to:'/tag',accomplish:false,},
+                    {name:'InputNumber',to:'/inputNumber',accomplish:false,},
+                    {name:'Progress',to:'/progress',accomplish:false,},
+                    {name:'Upload',to:'/upload',accomplish:false,},
+                    {name:'Collapse',to:'/collapse',accomplish:false,},
+                    {name:'Carousel',to:'/carousel',accomplish:false,},
+                    {name:'Card',to:'/card',accomplish:true,},
+                    {name:'Tree',to:'/tree',accomplish:true,},
+                    {name:'Rate',to:'/rate',accomplish:true,},
+                    {name:'Circle',to:'/circle',accomplish:false,},
+                    {name:'Tabs',to:'/tabs',accomplish:false,},
+                    {name:'Tooltip',to:'/tooltip',accomplish:false,},
+                    {name:'Poptip',to:'/poptip',accomplish:false,},
+                    {name:'Slider',to:'/slider',accomplish:false,},
+                    {name:'Dropdown',to:'/dropdown',accomplish:false,},
+                    {name:'Breadcrumb',to:'/breadcrumb',accomplish:true,},
+                    {name:'Menu',to:'/menu',accomplish:true,},
+                    {name:'Spin',to:'/spin',accomplish:true,},
+                    {name:'Cascader',to:'/cascader',accomplish:false,},
+                    {name:'Select',to:'/select',accomplish:true,},
+                    {name:'Backtop',to:'/backtop',accomplish:false,},
+                    {name:'Page',to:'/page',accomplish:false,},
+                    {name:'Transfer',to:'/transfer',accomplish:true,},
+                    {name:'Date',to:'/date',accomplish:false,},
+                    {name:'Form',to:'/form',accomplish:true,},
+                    {name:'Table',to:'/table',accomplish:false,},
+                    {name:'LoadingBar',to:'/loading-bar',accomplish:true,},
+                    {name:'Modal',to:'/modal',accomplish:true,},
+                    {name:'Message',to:'/message',accomplish:true,},
+                    {name:'Notice',to:'/notice',accomplish:true,},
+                    {name:'Avatar',to:'/avatar',accomplish:true,},
+                    {name:'ColorPicker',to:'/color-picker',accomplish:true,},
+                    {name:'AutoComplete',to:'/auto-complete',accomplish:true,},
+                    {name:'Scroll',to:'/scroll',accomplish:false,},
+                    {name:'Divider',to:'/divider',accomplish:true,},
+                    {name:'Time',to:'/time',accomplish:true,},
+                    {name:'Cell',to:'/cell',accomplish:true,},
+                    {name:'Drawer',to:'/drawer',accomplish:true,},
+                ]
             }
         },
         mounted: function() {

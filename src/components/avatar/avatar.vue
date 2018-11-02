@@ -67,7 +67,7 @@
                         msTransform: `scale(${this.scale})`,
                         WebkitTransform: `scale(${this.scale})`,
                         transform: `scale(${this.scale})`,
-                        position: 'absolute',
+                        // position: 'absolute',
                         display: 'inline-block',
                         left: `calc(50% - ${Math.round(this.childrenWidth / 2)}px)`
                     };

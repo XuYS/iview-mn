@@ -1,21 +1,21 @@
 <template>
-    <div>
-        <div style="margin: 10px">
-            Display border <i-switch v-model="showBorder" style="margin-right: 5px"></i-switch>
-            Display stripe <i-switch v-model="showStripe" style="margin-right: 5px"></i-switch>
-            Display index <i-switch v-model="showIndex" style="margin-right: 5px"></i-switch>
-            Display multi choice <i-switch v-model="showCheckbox" style="margin-right: 5px"></i-switch>
-            Display header <i-switch v-model="showHeader" style="margin-right: 5px"></i-switch>
-            Table scrolling <i-switch v-model="fixedHeader" style="margin-right: 5px"></i-switch>
-            <br>
-            <br>
-            Table size
-            <Radio-group v-model="tableSize" type="button">
-                <Radio label="large">large</Radio>
-                <Radio label="default">medium(default)</Radio>
-                <Radio label="small">small</Radio>
-            </Radio-group>
-        </div>
+    <div style="margin: 10px">
+        Display border <i-switch v-model="showBorder" style="margin-right: 5px"></i-switch>
+        Display stripe <i-switch v-model="showStripe" style="margin-right: 5px"></i-switch>
+        Display index <i-switch v-model="showIndex" style="margin-right: 5px"></i-switch>
+        Display multi choice <i-switch v-model="showCheckbox" style="margin-right: 5px"></i-switch>
+        Display header <i-switch v-model="showHeader" style="margin-right: 5px"></i-switch>
+        Table scrolling <i-switch v-model="fixedHeader" style="margin-right: 5px"></i-switch>
+        <br>
+        <br>
+        Table size
+        <Radio-group v-model="tableSize" type="button">
+            <Radio label="large">large</Radio>
+            <Radio label="default">medium(default)</Radio>
+            <Radio label="small">small</Radio>
+        </Radio-group>
+        <br>
+        <br>
         <Table :border="showBorder" :stripe="showStripe" :show-header="showHeader" :height="fixedHeader ? 250 : ''" :size="tableSize" :data="tableData3" :columns="tableColumns3"></Table>
     </div>
 </template>
