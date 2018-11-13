@@ -9,7 +9,7 @@
                     :columns="cloneColumns"
                     :column-rows="columnRows"
                     :obj-data="objData"
-                    :columns-width="columnsWidth"
+                    :columns-height="columnsHeight"
                     :data="rebuildData"></table-head>
             </div>
             <div :class="[prefixCls + '-body']" :style="bodyStyle" ref="body" @scroll="handleBodyScroll"
@@ -20,7 +20,7 @@
                     :styleObject="tableStyle"
                     :columns="cloneColumns"
                     :data="rebuildData"
-                    :columns-width="columnsWidth"
+                    :columns-height="columnsHeight"
                     :obj-data="objData"></table-body>
             </div>
             <div
@@ -29,7 +29,7 @@
                 <table cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr>
-                            <td :style="{'height':bodyStyle.height,'width':`${this.headerWidth}px`}">
+                            <td :style="{'height':`${this.headerHeight}px`,'width':bodyStyle.width}">
                                 <span v-html="localeNoDataText" v-if="!data || data.length === 0"></span>
                                 <span v-html="localeNoFilteredDataText" v-else></span>
                             </td>
@@ -47,7 +47,7 @@
                         :column-rows="columnRows"
                         :fixed-column-rows="leftFixedColumnRows"
                         :obj-data="objData"
-                        :columns-width="columnsWidth"
+                        :columns-height="columnsHeight"
                         :data="rebuildData"></table-head>
                 </div>
                 <div :class="[prefixCls + '-fixed-body']" :style="fixedBodyStyle" ref="fixedBody" @mousewheel="handleFixedMousewheel" @DOMMouseScroll="handleFixedMousewheel">
@@ -57,7 +57,7 @@
                         :styleObject="fixedTableStyle"
                         :columns="leftFixedColumns"
                         :data="rebuildData"
-                        :columns-width="columnsWidth"
+                        :columns-height="columnsHeight"
                         :obj-data="objData"></table-body>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                         :column-rows="columnRows"
                         :fixed-column-rows="rightFixedColumnRows"
                         :obj-data="objData"
-                        :columns-width="columnsWidth"
+                        :columns-height="columnsHeight"
                         :data="rebuildData"></table-head>
                 </div>
                 <div :class="[prefixCls + '-fixed-body']" :style="fixedBodyStyle" ref="fixedRightBody" @mousewheel="handleFixedMousewheel" @DOMMouseScroll="handleFixedMousewheel">
@@ -81,7 +81,7 @@
                         :styleObject="fixedRightTableStyle"
                         :columns="rightFixedColumns"
                         :data="rebuildData"
-                        :columns-width="columnsWidth"
+                        :columns-height="columnsHeight"
                         :obj-data="objData"></table-body>
                 </div>
             </div>
@@ -135,10 +135,10 @@
                     return !this.$IVIEW || this.$IVIEW.size === '' ? 'default' : this.$IVIEW.size;
                 }
             },
-            width: {
+            height: {
                 type: [Number, String]
             },
-            height: {
+            width: {
                 type: [Number, String]
             },
             stripe: {
@@ -184,8 +184,9 @@
             const colsWithId = this.makeColumnsId(this.columns);
             return {
                 ready: false,
-                tableWidth: 0,
-                columnsWidth: {},
+                // tableWidth: 0,
+                tableHeight: 0,
+                columnsHeight: {},
                 prefixCls: prefixCls,
                 compiledUids: [],
                 objData: this.makeObjData(),     // checkbox or highlight-row
@@ -198,6 +199,7 @@
                 showSlotHeader: true,
                 showSlotFooter: true,
                 bodyHeight: 0,
+                bodyWidth: 0,
                 scrollBarWidth: getScrollBarSize(),
                 currentContext: this.context,
                 cloneData: deepCopy(this.data),    // when Cell has a button to delete row data, clickCurrentRow will throw an error, so clone a data
@@ -253,63 +255,64 @@
             },
             styles () {
                 let style = {};
-                // if (this.height) {
-                //     const height = parseInt(this.height);
-                //     style.height = `${height}px`;
-                // }
-                style.height = `100%`;
+                if (this.height) {
+                    const height = parseInt(this.height);
+                    style.height = `${height}px`;
+                }else{
+                    style.height = `100%`;
+                }
+                style.float = `left`;
                 if (this.width) style.width = `${this.width}px`;
                 return style;
             },
             tableStyle () {
                 let style = {};
-                if (this.tableWidth !== 0) {
-                    let width = '';
-                    if (this.bodyHeight === 0) {
-                        width = this.tableWidth;
+                if (this.tableHeight !== 0) {
+                    let height = '';
+                    if (this.bodyWidth === 0) {
+                        height = this.tableHeight;
                     } else {
-                        width = this.tableWidth - (this.showVerticalScrollBar?this.scrollBarWidth:0);
+                        height = this.tableHeight - (this.showVerticalScrollBar?this.scrollBarWidth:0);
                     }
-//                    const width = this.bodyHeight === 0 ? this.tableWidth : this.tableWidth - this.scrollBarWidth;
-                    style.width = `${width}px`;
+                    style.height = `${height}px`;
                 }
                 return style;
             },
             tableHeaderStyle () {
                 let style = {};
-                if (this.tableWidth !== 0) {
-                    let width = '';
-                    width = this.tableWidth;
-                    style.width = `${width}px`;
+                if (this.tableHeight !== 0) {
+                    let height = '';
+                    height = this.tableHeight;
+                    style.height = `${height}px`;
                 }
                 return style;
             },
             fixedTableStyle () {
                 let style = {};
-                let width = 0;
+                let height = 0;
                 this.leftFixedColumns.forEach((col) => {
-                    if (col.fixed && col.fixed === 'left') width += col._width;
+                    if (col.fixed && col.fixed === 'left') height += col._height;
                 });
-                style.width = `${width}px`;
+                style.height = `${height}px`;
                 return style;
             },
             fixedRightTableStyle () {
                 let style = {};
-                let width = 0;
+                let height = 0;
                 this.rightFixedColumns.forEach((col) => {
-                    if (col.fixed && col.fixed === 'right') width += col._width;
+                    if (col.fixed && col.fixed === 'right') height += col._height;
                 });
                 //width += this.scrollBarWidth;
-                style.width = `${width}px`;
-                style.right = `${this.showVerticalScrollBar?this.scrollBarWidth:0}px`;
+                style.height = `${height}px`;
+                style.bottom = `${this.showVerticalScrollBar?this.scrollBarWidth:0}px`;
                 return style;
             },
             fixedRightHeaderStyle () {
                 let style = {};
-                let width = 0;
-                let height = this.headerHeight+1;
+                let width = this.headerWidth+1;
+                let height = 0;
                 if(this.showVerticalScrollBar){
-                    width = this.scrollBarWidth;
+                    height = this.scrollBarWidth;
                 }
                 style.width = `${width}px`;
                 style.height = `${height}px`;
@@ -317,17 +320,17 @@
             },
             bodyStyle () {
                 let style = {};
-                if (this.bodyHeight !== 0) {
-                    const height = this.bodyHeight;
-                    style.height = `${height}px`;
+                if (this.bodyWidth !== 0) {
+                    const width = this.bodyWidth;
+                    style.width = `${width}px`;
                 }
                 return style;
             },
             fixedBodyStyle () {
                 let style = {};
-                if (this.bodyHeight !== 0) {
-                    let height = this.bodyHeight - (this.showHorizontalScrollBar?this.scrollBarWidth:0);
-                    style.height = this.showHorizontalScrollBar ? `${height}px` : `${height - 1}px`;
+                if (this.bodyWidth !== 0) {
+                    let width = this.bodyWidth - (this.showHorizontalScrollBar?this.scrollBarWidth:0);
+                    style.width = this.showHorizontalScrollBar ? `${width}px` : `${width - 1}px`;
                 }
                 return style;
             },
@@ -350,109 +353,107 @@
             },
             handleResize () {
                     //let tableWidth = parseInt(getStyle(this.$el, 'width')) - 1;
-                let tableWidth = this.$el.offsetWidth - 1;
-                let columnsWidth = {};
-                let sumMinWidth = 0;
-                let hasWidthColumns = [];
-                let noWidthColumns = [];
-                let maxWidthColumns = [];
-                let noMaxWidthColumns = [];
+                let tableHeight = this.$el.offsetHeight - 1;
+                let columnsHeight = {};
+                let sumMinHeight = 0;
+                let hasHeightColumns = [];
+                let noHeightColumns = [];
+                let maxHeightColumns = [];
+                let noMaxHeightColumns = [];
                 this.cloneColumns.forEach((col) => {
-                    if (col.width) {
-                        hasWidthColumns.push(col);
+                    if (col.height) {
+                        hasHeightColumns.push(col);
                     }
                     else{
-                        noWidthColumns.push(col);
-                        if (col.minWidth) {
-                            sumMinWidth += col.minWidth;
+                        noHeightColumns.push(col);
+                        if (col.minHeight) {
+                            sumMinHeight += col.minHeight;
                         }
-                        if (col.maxWidth) {
-                            maxWidthColumns.push(col);
+                        if (col.maxHeight) {
+                            maxHeightColumns.push(col);
                         }
                         else {
-                            noMaxWidthColumns.push(col);
+                            noMaxHeightColumns.push(col);
                         }
                     }
-                    col._width = null;
+                    col._height = null;
                 });
 
-
-                let unUsableWidth = hasWidthColumns.map(cell => cell.width).reduce((a, b) => a + b, 0);
-                let usableWidth = tableWidth - unUsableWidth - sumMinWidth - (this.showVerticalScrollBar?this.scrollBarWidth:0) - 1;
-                let usableLength = noWidthColumns.length;
-                let columnWidth = 0;
-                if(usableWidth > 0 && usableLength > 0){
-                    columnWidth = parseInt(usableWidth / usableLength);
+                let unUsableHeight = hasHeightColumns.map(cell => cell.height).reduce((a, b) => a + b, 0);
+                let usableHeight = tableHeight - unUsableHeight - sumMinHeight - (this.showVerticalScrollBar?this.scrollBarWidth:0) - 1;
+                let usableLength = noHeightColumns.length;
+                let columnHeight = 0;
+                if(usableHeight > 0 && usableLength > 0){
+                    columnHeight = parseInt(usableHeight / usableLength);
                 }
 
                     
                 for (let i = 0; i < this.cloneColumns.length; i++) {
                     const column = this.cloneColumns[i];
-                    let width = columnWidth + (column.minWidth?column.minWidth:0);
-                    if(column.width){
-                        width = column.width;
+                    let height = columnHeight + (column.minHeight?column.minHeight:0);
+                    if(column.height){
+                        height = column.height;
                     }
                     else{
-                        if (column._width) {
-                            width = column._width;
+                        if (column._height) {
+                            height = column._height;
                         }
                         else {
-                            if (column.minWidth > width){
-                                width = column.minWidth;
+                            if (column.minHeight > height){
+                                height = column.minHeight;
                             }
-                            else if (column.maxWidth < width){
-                                width = column.maxWidth;
+                            else if (column.maxHeight < height){
+                                height = column.maxHeight;
                             }
                             
-                            if (usableWidth>0) {
-                                usableWidth -= width - (column.minWidth?column.minWidth:0);
+                            if (usableHeight>0) {
+                                usableHeight -= height - (column.minHeight?column.minHeight:0);
                                 usableLength--;
                                 if (usableLength > 0) {
-                                    columnWidth = parseInt(usableWidth / usableLength);
+                                    columnHeight = parseInt(usableHeight / usableLength);
                                 }
                                 else {
-                                    columnWidth = 0;
+                                    columnHeight = 0;
                                 }
                             }
                             else{
-                                columnWidth = 0;
+                                columnHeight = 0;
                             }
                         }
                     }
 
-                    column._width = width;
+                    column._height = height;
 
-                    columnsWidth[column._index] = {
-                        width: width
+                    columnsHeight[column._index] = {
+                        height: height
                     };
 
                 }
-                if(usableWidth>0) {
-                    usableLength = noMaxWidthColumns.length;
-                    columnWidth = parseInt(usableWidth / usableLength);
-                    for (let i = 0; i < noMaxWidthColumns.length; i++) {
-                        const column = noMaxWidthColumns[i];
-                        let width = column._width + columnWidth;
+                if(usableHeight>0) {
+                    usableLength = noMaxHeightColumns.length;
+                    columnHeight = parseInt(usableHeight / usableLength);
+                    for (let i = 0; i < noMaxHeightColumns.length; i++) {
+                        const column = noMaxHeightColumns[i];
+                        let height = column._height + columnHeight;
                         if (usableLength > 1) {
                             usableLength--;
-                            usableWidth -= columnWidth;
-                            columnWidth = parseInt(usableWidth / usableLength);
+                            usableHeight -= columnHeight;
+                            columnHeight = parseInt(usableHeight / usableLength);
                         }
                         else {
-                            columnWidth = 0;
+                            columnHeight = 0;
                         }
 
-                        column._width = width;
+                        column._height = height;
 
-                        columnsWidth[column._index] = {
-                            width: width
+                        columnsHeight[column._index] = {
+                            height: height
                         };
 
                     }
                 }
-                
-                this.tableWidth = this.cloneColumns.map(cell => cell._width).reduce((a, b) => a + b, 0) + (this.showVerticalScrollBar?this.scrollBarWidth:0) + 1;
-                this.columnsWidth = columnsWidth;
+                this.tableHeight = this.cloneColumns.map(cell => cell._height).reduce((a, b) => a + b, 0) + (this.showVerticalScrollBar?this.scrollBarWidth:0) + 1;
+                this.columnsHeight = columnsHeight;
                 this.fixedHeader();
             },
             handleMouseIn (_index) {
@@ -553,25 +554,24 @@
                 }
                 this.$emit('on-selection-change', selection);
             },
-            
             fixedHeader () {
-                if (this.height) {
+                if (this.width) {
                     this.$nextTick(() => {
-                        const titleHeight = parseInt(getStyle(this.$refs.title, 'height')) || 0;
-                        const headerHeight = parseInt(getStyle(this.$refs.header, 'height')) || 0;
-                        const footerHeight = parseInt(getStyle(this.$refs.footer, 'height')) || 0;
-                        this.bodyHeight = this.height - titleHeight - headerHeight - footerHeight;
+                        const titleWidth = parseInt(getStyle(this.$refs.title, 'width')) || 0;
+                        const headerWidth = parseInt(getStyle(this.$refs.header, 'width')) || 0;
+                        const footerWidth = parseInt(getStyle(this.$refs.footer, 'width')) || 0;
+                        this.bodyWidth = this.width - titleWidth - headerWidth - footerWidth;
                         this.$nextTick(()=>this.fixedBody());
                     });
                 } else {
-                    this.bodyHeight = 0;
+                    this.bodyWidth = 0;
                     this.$nextTick(()=>this.fixedBody());
                 }
             },
             fixedBody (){
                 if (this.$refs.header) {
-                    this.headerWidth = this.$refs.header.children[0].offsetWidth;
                     this.headerHeight = this.$refs.header.children[0].offsetHeight;
+                    this.headerWidth = this.$refs.header.children[0].offsetWidth;
                     //this.showHorizontalScrollBar = this.headerWidth>this.$refs.header.offsetWidth;
                 }
 
@@ -581,21 +581,20 @@
                 else{
                     let bodyContentEl = this.$refs.tbody.$el;
                     let bodyEl = bodyContentEl.parentElement;
-                    let bodyContentHeight = bodyContentEl.offsetHeight;
-                    let bodyHeight = bodyEl.offsetHeight;
-
-                    this.showHorizontalScrollBar = bodyEl.offsetWidth < bodyContentEl.offsetWidth + (this.showVerticalScrollBar?this.scrollBarWidth:0);
-                    this.showVerticalScrollBar = this.bodyHeight? bodyHeight - (this.showHorizontalScrollBar?this.scrollBarWidth:0) < bodyContentHeight : false;
+                    let bodyContentWidth = bodyContentEl.offsetWidth;
+                    let bodyWidth = bodyEl.offsetWidth;
+                    this.showHorizontalScrollBar = bodyEl.offsetHeight < bodyContentEl.offsetHeight + (this.showVerticalScrollBar?this.scrollBarWidth:0);
+                    this.showVerticalScrollBar = this.bodyWidth? bodyWidth - (this.showHorizontalScrollBar?this.scrollBarWidth:0) < bodyContentWidth : false;
                     
                     if(this.showVerticalScrollBar){
-                        bodyEl.classList.add(this.prefixCls +'-overflowY');
-                    }else{
-                        bodyEl.classList.remove(this.prefixCls +'-overflowY');
-                    }
-                    if(this.showHorizontalScrollBar){
                         bodyEl.classList.add(this.prefixCls +'-overflowX');
                     }else{
                         bodyEl.classList.remove(this.prefixCls +'-overflowX');
+                    }
+                    if(this.showHorizontalScrollBar){
+                        bodyEl.classList.add(this.prefixCls +'-overflowY');
+                    }else{
+                        bodyEl.classList.remove(this.prefixCls +'-overflowY');
                     }
                 } 
             },
@@ -604,9 +603,9 @@
                 this.cloneColumns.forEach((col) => col._filterVisible = false);
             },
             handleBodyScroll (event) {
-                if (this.showHeader) this.$refs.header.scrollLeft = event.target.scrollLeft;
-                if (this.isLeftFixed) this.$refs.fixedBody.scrollTop = event.target.scrollTop;
-                if (this.isRightFixed) this.$refs.fixedRightBody.scrollTop = event.target.scrollTop;
+                if (this.showHeader) this.$refs.header.scrollTop = event.target.scrollTop;
+                if (this.isLeftFixed) this.$refs.fixedBody.scrollLeft = event.target.scrollLeft;
+                if (this.isRightFixed) this.$refs.fixedRightBody.scrollLeft = event.target.scrollLeft;
                 this.hideColumnFilter();
             },
             handleFixedMousewheel(event) {
@@ -838,7 +837,7 @@
                 columns.forEach((column, index) => {
                     column._index = index;
                     column._columnKey = columnKey++;
-                    column._width = column.width ? column.width : '';    // update in handleResize()
+                    column._height = column.height ? column.height : '';    // update in handleResize()
                     column._sortType = 'normal';
                     column._filterVisible = false;
                     column._isFiltered = false;
@@ -956,7 +955,7 @@
                 },
                 deep: true
             },
-            height () {
+            width () {
                 this.handleResize();
             },
             showHorizontalScrollBar () {

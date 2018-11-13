@@ -22028,10 +22028,10 @@ exports.default = {
                 return !this.$IVIEW || this.$IVIEW.size === '' ? 'default' : this.$IVIEW.size;
             }
         },
-        width: {
+        height: {
             type: [Number, String]
         },
-        height: {
+        width: {
             type: [Number, String]
         },
         stripe: {
@@ -22077,8 +22077,9 @@ exports.default = {
         var colsWithId = this.makeColumnsId(this.columns);
         return {
             ready: false,
-            tableWidth: 0,
-            columnsWidth: {},
+
+            tableHeight: 0,
+            columnsHeight: {},
             prefixCls: prefixCls,
             compiledUids: [],
             objData: this.makeObjData(),
@@ -22091,6 +22092,7 @@ exports.default = {
             showSlotHeader: true,
             showSlotFooter: true,
             bodyHeight: 0,
+            bodyWidth: 0,
             scrollBarWidth: (0, _assist.getScrollBarSize)(),
             currentContext: this.context,
             cloneData: (0, _assist.deepCopy)(this.data),
@@ -22131,31 +22133,35 @@ exports.default = {
         },
         styles: function styles() {
             var style = {};
-
-            style.height = '100%';
+            if (this.height) {
+                var height = parseInt(this.height);
+                style.height = String(height) + 'px';
+            } else {
+                style.height = '100%';
+            }
+            style.float = 'left';
             if (this.width) style.width = String(this.width) + 'px';
             return style;
         },
         tableStyle: function tableStyle() {
             var style = {};
-            if (this.tableWidth !== 0) {
-                var width = '';
-                if (this.bodyHeight === 0) {
-                    width = this.tableWidth;
+            if (this.tableHeight !== 0) {
+                var height = '';
+                if (this.bodyWidth === 0) {
+                    height = this.tableHeight;
                 } else {
-                    width = this.tableWidth - (this.showVerticalScrollBar ? this.scrollBarWidth : 0);
+                    height = this.tableHeight - (this.showVerticalScrollBar ? this.scrollBarWidth : 0);
                 }
-
-                style.width = String(width) + 'px';
+                style.height = String(height) + 'px';
             }
             return style;
         },
         tableHeaderStyle: function tableHeaderStyle() {
             var style = {};
-            if (this.tableWidth !== 0) {
-                var width = '';
-                width = this.tableWidth;
-                style.width = String(width) + 'px';
+            if (this.tableHeight !== 0) {
+                var height = '';
+                height = this.tableHeight;
+                style.height = String(height) + 'px';
             }
             return style;
         },
@@ -22163,36 +22169,36 @@ exports.default = {
             var _this = this;
 
             var style = {};
-            var width = 0;
+            var height = 0;
             this.leftFixedColumns.forEach(function (col) {
                 (0, _newArrowCheck3.default)(this, _this);
 
-                if (col.fixed && col.fixed === 'left') width += col._width;
+                if (col.fixed && col.fixed === 'left') height += col._height;
             }.bind(this));
-            style.width = String(width) + 'px';
+            style.height = String(height) + 'px';
             return style;
         },
         fixedRightTableStyle: function fixedRightTableStyle() {
             var _this2 = this;
 
             var style = {};
-            var width = 0;
+            var height = 0;
             this.rightFixedColumns.forEach(function (col) {
                 (0, _newArrowCheck3.default)(this, _this2);
 
-                if (col.fixed && col.fixed === 'right') width += col._width;
+                if (col.fixed && col.fixed === 'right') height += col._height;
             }.bind(this));
 
-            style.width = String(width) + 'px';
-            style.right = String(this.showVerticalScrollBar ? this.scrollBarWidth : 0) + 'px';
+            style.height = String(height) + 'px';
+            style.bottom = String(this.showVerticalScrollBar ? this.scrollBarWidth : 0) + 'px';
             return style;
         },
         fixedRightHeaderStyle: function fixedRightHeaderStyle() {
             var style = {};
-            var width = 0;
-            var height = this.headerHeight + 1;
+            var width = this.headerWidth + 1;
+            var height = 0;
             if (this.showVerticalScrollBar) {
-                width = this.scrollBarWidth;
+                height = this.scrollBarWidth;
             }
             style.width = String(width) + 'px';
             style.height = String(height) + 'px';
@@ -22200,17 +22206,17 @@ exports.default = {
         },
         bodyStyle: function bodyStyle() {
             var style = {};
-            if (this.bodyHeight !== 0) {
-                var height = this.bodyHeight;
-                style.height = String(height) + 'px';
+            if (this.bodyWidth !== 0) {
+                var width = this.bodyWidth;
+                style.width = String(width) + 'px';
             }
             return style;
         },
         fixedBodyStyle: function fixedBodyStyle() {
             var style = {};
-            if (this.bodyHeight !== 0) {
-                var height = this.bodyHeight - (this.showHorizontalScrollBar ? this.scrollBarWidth : 0);
-                style.height = this.showHorizontalScrollBar ? height + 'px' : height - 1 + 'px';
+            if (this.bodyWidth !== 0) {
+                var width = this.bodyWidth - (this.showHorizontalScrollBar ? this.scrollBarWidth : 0);
+                style.width = this.showHorizontalScrollBar ? width + 'px' : width - 1 + 'px';
             }
             return style;
         },
@@ -22244,111 +22250,110 @@ exports.default = {
         handleResize: function handleResize() {
             var _this5 = this;
 
-            var tableWidth = this.$el.offsetWidth - 1;
-            var columnsWidth = {};
-            var sumMinWidth = 0;
-            var hasWidthColumns = [];
-            var noWidthColumns = [];
-            var maxWidthColumns = [];
-            var noMaxWidthColumns = [];
+            var tableHeight = this.$el.offsetHeight - 1;
+            var columnsHeight = {};
+            var sumMinHeight = 0;
+            var hasHeightColumns = [];
+            var noHeightColumns = [];
+            var maxHeightColumns = [];
+            var noMaxHeightColumns = [];
             this.cloneColumns.forEach(function (col) {
                 (0, _newArrowCheck3.default)(this, _this5);
 
-                if (col.width) {
-                    hasWidthColumns.push(col);
+                if (col.height) {
+                    hasHeightColumns.push(col);
                 } else {
-                    noWidthColumns.push(col);
-                    if (col.minWidth) {
-                        sumMinWidth += col.minWidth;
+                    noHeightColumns.push(col);
+                    if (col.minHeight) {
+                        sumMinHeight += col.minHeight;
                     }
-                    if (col.maxWidth) {
-                        maxWidthColumns.push(col);
+                    if (col.maxHeight) {
+                        maxHeightColumns.push(col);
                     } else {
-                        noMaxWidthColumns.push(col);
+                        noMaxHeightColumns.push(col);
                     }
                 }
-                col._width = null;
+                col._height = null;
             }.bind(this));
 
-            var unUsableWidth = hasWidthColumns.map(function (cell) {
+            var unUsableHeight = hasHeightColumns.map(function (cell) {
                 (0, _newArrowCheck3.default)(this, _this5);
-                return cell.width;
+                return cell.height;
             }.bind(this)).reduce(function (a, b) {
                 (0, _newArrowCheck3.default)(this, _this5);
                 return a + b;
             }.bind(this), 0);
-            var usableWidth = tableWidth - unUsableWidth - sumMinWidth - (this.showVerticalScrollBar ? this.scrollBarWidth : 0) - 1;
-            var usableLength = noWidthColumns.length;
-            var columnWidth = 0;
-            if (usableWidth > 0 && usableLength > 0) {
-                columnWidth = parseInt(usableWidth / usableLength);
+            var usableHeight = tableHeight - unUsableHeight - sumMinHeight - (this.showVerticalScrollBar ? this.scrollBarWidth : 0) - 1;
+            var usableLength = noHeightColumns.length;
+            var columnHeight = 0;
+            if (usableHeight > 0 && usableLength > 0) {
+                columnHeight = parseInt(usableHeight / usableLength);
             }
 
             for (var i = 0; i < this.cloneColumns.length; i++) {
                 var column = this.cloneColumns[i];
-                var width = columnWidth + (column.minWidth ? column.minWidth : 0);
-                if (column.width) {
-                    width = column.width;
+                var height = columnHeight + (column.minHeight ? column.minHeight : 0);
+                if (column.height) {
+                    height = column.height;
                 } else {
-                    if (column._width) {
-                        width = column._width;
+                    if (column._height) {
+                        height = column._height;
                     } else {
-                        if (column.minWidth > width) {
-                            width = column.minWidth;
-                        } else if (column.maxWidth < width) {
-                            width = column.maxWidth;
+                        if (column.minHeight > height) {
+                            height = column.minHeight;
+                        } else if (column.maxHeight < height) {
+                            height = column.maxHeight;
                         }
 
-                        if (usableWidth > 0) {
-                            usableWidth -= width - (column.minWidth ? column.minWidth : 0);
+                        if (usableHeight > 0) {
+                            usableHeight -= height - (column.minHeight ? column.minHeight : 0);
                             usableLength--;
                             if (usableLength > 0) {
-                                columnWidth = parseInt(usableWidth / usableLength);
+                                columnHeight = parseInt(usableHeight / usableLength);
                             } else {
-                                columnWidth = 0;
+                                columnHeight = 0;
                             }
                         } else {
-                            columnWidth = 0;
+                            columnHeight = 0;
                         }
                     }
                 }
 
-                column._width = width;
+                column._height = height;
 
-                columnsWidth[column._index] = {
-                    width: width
+                columnsHeight[column._index] = {
+                    height: height
                 };
             }
-            if (usableWidth > 0) {
-                usableLength = noMaxWidthColumns.length;
-                columnWidth = parseInt(usableWidth / usableLength);
-                for (var _i = 0; _i < noMaxWidthColumns.length; _i++) {
-                    var _column = noMaxWidthColumns[_i];
-                    var _width = _column._width + columnWidth;
+            if (usableHeight > 0) {
+                usableLength = noMaxHeightColumns.length;
+                columnHeight = parseInt(usableHeight / usableLength);
+                for (var _i = 0; _i < noMaxHeightColumns.length; _i++) {
+                    var _column = noMaxHeightColumns[_i];
+                    var _height = _column._height + columnHeight;
                     if (usableLength > 1) {
                         usableLength--;
-                        usableWidth -= columnWidth;
-                        columnWidth = parseInt(usableWidth / usableLength);
+                        usableHeight -= columnHeight;
+                        columnHeight = parseInt(usableHeight / usableLength);
                     } else {
-                        columnWidth = 0;
+                        columnHeight = 0;
                     }
 
-                    _column._width = _width;
+                    _column._height = _height;
 
-                    columnsWidth[_column._index] = {
-                        width: _width
+                    columnsHeight[_column._index] = {
+                        height: _height
                     };
                 }
             }
-
-            this.tableWidth = this.cloneColumns.map(function (cell) {
+            this.tableHeight = this.cloneColumns.map(function (cell) {
                 (0, _newArrowCheck3.default)(this, _this5);
-                return cell._width;
+                return cell._height;
             }.bind(this)).reduce(function (a, b) {
                 (0, _newArrowCheck3.default)(this, _this5);
                 return a + b;
             }.bind(this), 0) + (this.showVerticalScrollBar ? this.scrollBarWidth : 0) + 1;
-            this.columnsWidth = columnsWidth;
+            this.columnsHeight = columnsHeight;
             this.fixedHeader();
         },
         handleMouseIn: function handleMouseIn(_index) {
@@ -22470,21 +22475,21 @@ exports.default = {
         fixedHeader: function fixedHeader() {
             var _this7 = this;
 
-            if (this.height) {
+            if (this.width) {
                 this.$nextTick(function () {
                     (0, _newArrowCheck3.default)(this, _this7);
 
-                    var titleHeight = parseInt((0, _assist.getStyle)(this.$refs.title, 'height')) || 0;
-                    var headerHeight = parseInt((0, _assist.getStyle)(this.$refs.header, 'height')) || 0;
-                    var footerHeight = parseInt((0, _assist.getStyle)(this.$refs.footer, 'height')) || 0;
-                    this.bodyHeight = this.height - titleHeight - headerHeight - footerHeight;
+                    var titleWidth = parseInt((0, _assist.getStyle)(this.$refs.title, 'width')) || 0;
+                    var headerWidth = parseInt((0, _assist.getStyle)(this.$refs.header, 'width')) || 0;
+                    var footerWidth = parseInt((0, _assist.getStyle)(this.$refs.footer, 'width')) || 0;
+                    this.bodyWidth = this.width - titleWidth - headerWidth - footerWidth;
                     this.$nextTick(function () {
                         (0, _newArrowCheck3.default)(this, _this7);
                         return this.fixedBody();
                     }.bind(this));
                 }.bind(this));
             } else {
-                this.bodyHeight = 0;
+                this.bodyWidth = 0;
                 this.$nextTick(function () {
                     (0, _newArrowCheck3.default)(this, _this7);
                     return this.fixedBody();
@@ -22493,8 +22498,8 @@ exports.default = {
         },
         fixedBody: function fixedBody() {
             if (this.$refs.header) {
-                this.headerWidth = this.$refs.header.children[0].offsetWidth;
                 this.headerHeight = this.$refs.header.children[0].offsetHeight;
+                this.headerWidth = this.$refs.header.children[0].offsetWidth;
             }
 
             if (!this.$refs.tbody || !this.data || this.data.length === 0) {
@@ -22502,21 +22507,20 @@ exports.default = {
             } else {
                 var bodyContentEl = this.$refs.tbody.$el;
                 var bodyEl = bodyContentEl.parentElement;
-                var bodyContentHeight = bodyContentEl.offsetHeight;
-                var bodyHeight = bodyEl.offsetHeight;
-
-                this.showHorizontalScrollBar = bodyEl.offsetWidth < bodyContentEl.offsetWidth + (this.showVerticalScrollBar ? this.scrollBarWidth : 0);
-                this.showVerticalScrollBar = this.bodyHeight ? bodyHeight - (this.showHorizontalScrollBar ? this.scrollBarWidth : 0) < bodyContentHeight : false;
+                var bodyContentWidth = bodyContentEl.offsetWidth;
+                var bodyWidth = bodyEl.offsetWidth;
+                this.showHorizontalScrollBar = bodyEl.offsetHeight < bodyContentEl.offsetHeight + (this.showVerticalScrollBar ? this.scrollBarWidth : 0);
+                this.showVerticalScrollBar = this.bodyWidth ? bodyWidth - (this.showHorizontalScrollBar ? this.scrollBarWidth : 0) < bodyContentWidth : false;
 
                 if (this.showVerticalScrollBar) {
-                    bodyEl.classList.add(this.prefixCls + '-overflowY');
-                } else {
-                    bodyEl.classList.remove(this.prefixCls + '-overflowY');
-                }
-                if (this.showHorizontalScrollBar) {
                     bodyEl.classList.add(this.prefixCls + '-overflowX');
                 } else {
                     bodyEl.classList.remove(this.prefixCls + '-overflowX');
+                }
+                if (this.showHorizontalScrollBar) {
+                    bodyEl.classList.add(this.prefixCls + '-overflowY');
+                } else {
+                    bodyEl.classList.remove(this.prefixCls + '-overflowY');
                 }
             }
         },
@@ -22529,9 +22533,9 @@ exports.default = {
             }.bind(this));
         },
         handleBodyScroll: function handleBodyScroll(event) {
-            if (this.showHeader) this.$refs.header.scrollLeft = event.target.scrollLeft;
-            if (this.isLeftFixed) this.$refs.fixedBody.scrollTop = event.target.scrollTop;
-            if (this.isRightFixed) this.$refs.fixedRightBody.scrollTop = event.target.scrollTop;
+            if (this.showHeader) this.$refs.header.scrollTop = event.target.scrollTop;
+            if (this.isLeftFixed) this.$refs.fixedBody.scrollLeft = event.target.scrollLeft;
+            if (this.isRightFixed) this.$refs.fixedRightBody.scrollLeft = event.target.scrollLeft;
             this.hideColumnFilter();
         },
         handleFixedMousewheel: function handleFixedMousewheel(event) {
@@ -22803,7 +22807,7 @@ exports.default = {
 
                 column._index = index;
                 column._columnKey = columnKey++;
-                column._width = column.width ? column.width : '';
+                column._height = column.height ? column.height : '';
                 column._sortType = 'normal';
                 column._filterVisible = false;
                 column._isFiltered = false;
@@ -22932,7 +22936,7 @@ exports.default = {
 
             deep: true
         },
-        height: function height() {
+        width: function width() {
             this.handleResize();
         },
         showHorizontalScrollBar: function showHorizontalScrollBar() {
@@ -23007,7 +23011,7 @@ exports.default = {
         columns: Array,
         objData: Object,
         data: Array,
-        columnsWidth: Object,
+        columnsHeight: Object,
         fixed: {
             type: [Boolean, String],
             default: false
@@ -23172,6 +23176,16 @@ exports.default = {
             }
             if (width === '0') width = '';
             return width;
+        },
+        setCellHeight: function setCellHeight(column) {
+            var height = '';
+            if (column.height) {
+                height = column.height;
+            } else if (this.columnsHeight[column._index]) {
+                height = this.columnsHeight[column._index].height;
+            }
+            if (height === '0') height = '';
+            return height;
         }
     }
 };
@@ -23215,7 +23229,7 @@ exports.default = {
         columns: Array,
         data: Array,
         objData: Object,
-        columnsWidth: Object,
+        columnsHeight: Object,
         fixed: {
             type: [Boolean, String],
             default: false
@@ -23257,7 +23271,8 @@ exports.default = {
         dblclickCurrentRow: function dblclickCurrentRow(_index) {
             this.$parent.dblclickCurrentRow(_index);
         }
-    }
+    },
+    created: function created() {}
 };
 
 /***/ }),
@@ -26918,7 +26933,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '0.0.1-rc.13',
+    version: '0.0.1-rc.14',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,
@@ -37506,8 +37521,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_vue__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_vue__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_7e3fb984_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_vue__ = __webpack_require__(541);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_7e3fb984_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_7e3fb984_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_15f5e4eb_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_vue__ = __webpack_require__(541);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_15f5e4eb_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_15f5e4eb_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(0);
 /* script */
 
@@ -37525,8 +37540,8 @@ var __vue_module_identifier__ = null
 
 var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_vue___default.a,
-  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_7e3fb984_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_vue__["render"],
-  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_7e3fb984_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_vue__["staticRenderFns"],
+  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_15f5e4eb_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_vue__["render"],
+  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_15f5e4eb_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_vue__["staticRenderFns"],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -37545,8 +37560,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_head_vue__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_head_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_head_vue__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_head_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_head_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_91ea8298_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_head_vue__ = __webpack_require__(521);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_91ea8298_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_head_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_91ea8298_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_head_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_49b6e02a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_head_vue__ = __webpack_require__(521);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_49b6e02a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_head_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_49b6e02a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_head_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(0);
 /* script */
 
@@ -37564,8 +37579,8 @@ var __vue_module_identifier__ = null
 
 var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_head_vue___default.a,
-  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_91ea8298_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_head_vue__["render"],
-  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_91ea8298_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_head_vue__["staticRenderFns"],
+  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_49b6e02a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_head_vue__["render"],
+  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_49b6e02a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_head_vue__["staticRenderFns"],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -37623,14 +37638,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 var render = function render() {
   var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('table', { style: _vm.styles, attrs: { "cellspacing": "0", "cellpadding": "0", "border": "0" } }, [_c('colgroup', [_vm._l(_vm.columns, function (column, index) {
-    return _c('col', { attrs: { "height": _vm.setCellWidth(column) } });
+    return _c('col', { attrs: { "height": _vm.setCellHeight(column) } });
   }), _vm._v(" "), _vm.$parent.showVerticalScrollBar ? _c('col', { attrs: { "height": _vm.$parent.scrollBarWidth } }) : _vm._e()], 2), _vm._v(" "), _c('thead', _vm._l(_vm.headRows, function (cols, rowIndex) {
     return _c('tr', [_vm._l(cols, function (column, index) {
       return _c('th', { class: _vm.alignCls(column), attrs: { "colspan": column.colSpan, "rowspan": column.rowSpan } }, [_c('div', { class: _vm.cellClasses(column) }, [column.type === 'expand' ? [!column.renderHeader ? _c('span', [_vm._v(_vm._s(column.title || ''))]) : _c('render-header', { attrs: { "render": column.renderHeader, "column": column, "index": index } })] : column.type === 'selection' ? [_c('Checkbox', { attrs: { "value": _vm.isSelectAll, "disabled": !_vm.data.length }, on: { "on-change": _vm.selectAll } })] : [!column.renderHeader ? _c('span', { class: (_obj = {}, _obj[_vm.prefixCls + '-cell-sort'] = column.sortable, _obj), on: { "click": function click($event) {
             _vm.handleSortByHead(_vm.getColumn(rowIndex, index)._index);
-          } } }, [_vm._v(_vm._s(column.title || '#'))]) : _c('render-header', { attrs: { "render": column.renderHeader, "column": column, "index": index } }), _vm._v(" "), column.sortable ? _c('span', { class: [_vm.prefixCls + '-sort'] }, [_c('i', { staticClass: "ivu-icon ivu-icon-md-arrow-dropup", class: { on: _vm.getColumn(rowIndex, index)._sortType === 'asc' }, on: { "click": function click($event) {
+          } } }, [_vm._v(_vm._s(column.title || '#'))]) : _c('render-header', { attrs: { "render": column.renderHeader, "column": column, "index": index } }), _vm._v(" "), column.sortable ? _c('span', { class: [_vm.prefixCls + '-sort'] }, [_c('i', { staticClass: "ivu-icon ivu-icon-md-arrow-dropleft", class: { on: _vm.getColumn(rowIndex, index)._sortType === 'asc' }, on: { "click": function click($event) {
             _vm.handleSort(_vm.getColumn(rowIndex, index)._index, 'asc');
-          } } }), _vm._v(" "), _c('i', { staticClass: "ivu-icon ivu-icon-md-arrow-dropdown", class: { on: _vm.getColumn(rowIndex, index)._sortType === 'desc' }, on: { "click": function click($event) {
+          } } }), _vm._v(" "), _c('i', { staticClass: "ivu-icon ivu-icon-md-arrow-dropright", class: { on: _vm.getColumn(rowIndex, index)._sortType === 'desc' }, on: { "click": function click($event) {
             _vm.handleSort(_vm.getColumn(rowIndex, index)._index, 'desc');
           } } })]) : _vm._e(), _vm._v(" "), _vm.isPopperShow(column) ? _c('Poptip', { attrs: { "placement": "bottom", "popper-class": "ivu-table-popper", "transfer": "" }, on: { "on-popper-hide": function onPopperHide($event) {
             _vm.handleFilterHide(_vm.getColumn(rowIndex, index)._index);
@@ -37668,8 +37683,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_body_vue__ = __webpack_require__(217);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_body_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_body_vue__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_body_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_body_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_adeb9492_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_body_vue__ = __webpack_require__(527);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_adeb9492_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_body_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_adeb9492_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_body_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_302eb148_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_body_vue__ = __webpack_require__(527);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_302eb148_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_body_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_302eb148_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_body_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(0);
 /* script */
 
@@ -37687,8 +37702,8 @@ var __vue_module_identifier__ = null
 
 var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_table_body_vue___default.a,
-  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_adeb9492_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_body_vue__["render"],
-  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_adeb9492_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_body_vue__["staticRenderFns"],
+  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_302eb148_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_body_vue__["render"],
+  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_302eb148_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_table_body_vue__["staticRenderFns"],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -37824,7 +37839,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var render = function render() {
   var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('table', { style: _vm.styleObject, attrs: { "cellspacing": "0", "cellpadding": "0", "border": "0" } }, [_c('colgroup', _vm._l(_vm.columns, function (column, index) {
-    return _c('col', { attrs: { "height": _vm.setCellWidth(column) } });
+    return _c('col', { attrs: { "height": _vm.setCellHeight(column) } });
   })), _vm._v(" "), _c('tbody', { class: [_vm.prefixCls + '-tbody'] }, [_vm._l(_vm.data, function (row, index) {
     return [_c('table-tr', { key: row._rowKey, attrs: { "row": row, "prefix-cls": _vm.prefixCls }, nativeOn: { "mouseenter": function mouseenter($event) {
           $event.stopPropagation();_vm.handleMouseIn(row._index);
@@ -39503,7 +39518,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var render = function render() {
-  var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('div', { class: _vm.wrapClasses, style: _vm.styles }, [_c('div', { class: _vm.classes }, [_vm.showSlotHeader ? _c('div', { ref: "title", class: [_vm.prefixCls + '-title'] }, [_vm._t("header")], 2) : _vm._e(), _vm._v(" "), _vm.showHeader ? _c('div', { ref: "header", class: [_vm.prefixCls + '-header'], on: { "mousewheel": _vm.handleMouseWheel } }, [_c('table-head', { attrs: { "prefix-cls": _vm.prefixCls, "styleObject": _vm.tableHeaderStyle, "columns": _vm.cloneColumns, "column-rows": _vm.columnRows, "obj-data": _vm.objData, "columns-width": _vm.columnsWidth, "data": _vm.rebuildData } })], 1) : _vm._e(), _vm._v(" "), _c('div', { directives: [{ name: "show", rawName: "v-show", value: !(!!_vm.localeNoDataText && (!_vm.data || _vm.data.length === 0) || !!_vm.localeNoFilteredDataText && (!_vm.rebuildData || _vm.rebuildData.length === 0)), expression: "!((!!localeNoDataText && (!data || data.length === 0)) || (!!localeNoFilteredDataText && (!rebuildData || rebuildData.length === 0)))" }], ref: "body", class: [_vm.prefixCls + '-body'], style: _vm.bodyStyle, on: { "scroll": _vm.handleBodyScroll } }, [_c('table-body', { ref: "tbody", attrs: { "prefix-cls": _vm.prefixCls, "styleObject": _vm.tableStyle, "columns": _vm.cloneColumns, "data": _vm.rebuildData, "columns-width": _vm.columnsWidth, "obj-data": _vm.objData } })], 1), _vm._v(" "), _c('div', { directives: [{ name: "show", rawName: "v-show", value: !!_vm.localeNoDataText && (!_vm.data || _vm.data.length === 0) || !!_vm.localeNoFilteredDataText && (!_vm.rebuildData || _vm.rebuildData.length === 0), expression: "((!!localeNoDataText && (!data || data.length === 0)) || (!!localeNoFilteredDataText && (!rebuildData || rebuildData.length === 0)))" }], class: [_vm.prefixCls + '-tip'], style: _vm.bodyStyle, on: { "scroll": _vm.handleBodyScroll } }, [_c('table', { attrs: { "cellspacing": "0", "cellpadding": "0", "border": "0" } }, [_c('tbody', [_c('tr', [_c('td', { style: { 'height': _vm.bodyStyle.height, 'width': this.headerWidth + "px" } }, [!_vm.data || _vm.data.length === 0 ? _c('span', { domProps: { "innerHTML": _vm._s(_vm.localeNoDataText) } }) : _c('span', { domProps: { "innerHTML": _vm._s(_vm.localeNoFilteredDataText) } })])])])])]), _vm._v(" "), _vm.isLeftFixed ? _c('div', { class: [_vm.prefixCls + '-fixed'], style: _vm.fixedTableStyle }, [_vm.showHeader ? _c('div', { class: _vm.fixedHeaderClasses }, [_c('table-head', { attrs: { "fixed": "left", "prefix-cls": _vm.prefixCls, "styleObject": _vm.fixedTableStyle, "columns": _vm.leftFixedColumns, "column-rows": _vm.columnRows, "fixed-column-rows": _vm.leftFixedColumnRows, "obj-data": _vm.objData, "columns-width": _vm.columnsWidth, "data": _vm.rebuildData } })], 1) : _vm._e(), _vm._v(" "), _c('div', { ref: "fixedBody", class: [_vm.prefixCls + '-fixed-body'], style: _vm.fixedBodyStyle, on: { "mousewheel": _vm.handleFixedMousewheel, "DOMMouseScroll": _vm.handleFixedMousewheel } }, [_c('table-body', { attrs: { "fixed": "left", "prefix-cls": _vm.prefixCls, "styleObject": _vm.fixedTableStyle, "columns": _vm.leftFixedColumns, "data": _vm.rebuildData, "columns-width": _vm.columnsWidth, "obj-data": _vm.objData } })], 1)]) : _vm._e(), _vm._v(" "), _vm.isRightFixed ? _c('div', { class: [_vm.prefixCls + '-fixed-right'], style: _vm.fixedRightTableStyle }, [_vm.showHeader ? _c('div', { class: _vm.fixedHeaderClasses }, [_c('table-head', { attrs: { "fixed": "right", "prefix-cls": _vm.prefixCls, "styleObject": _vm.fixedRightTableStyle, "columns": _vm.rightFixedColumns, "column-rows": _vm.columnRows, "fixed-column-rows": _vm.rightFixedColumnRows, "obj-data": _vm.objData, "columns-width": _vm.columnsWidth, "data": _vm.rebuildData } })], 1) : _vm._e(), _vm._v(" "), _c('div', { ref: "fixedRightBody", class: [_vm.prefixCls + '-fixed-body'], style: _vm.fixedBodyStyle, on: { "mousewheel": _vm.handleFixedMousewheel, "DOMMouseScroll": _vm.handleFixedMousewheel } }, [_c('table-body', { attrs: { "fixed": "right", "prefix-cls": _vm.prefixCls, "styleObject": _vm.fixedRightTableStyle, "columns": _vm.rightFixedColumns, "data": _vm.rebuildData, "columns-width": _vm.columnsWidth, "obj-data": _vm.objData } })], 1)]) : _vm._e(), _vm._v(" "), _vm.isRightFixed ? _c('div', { class: [_vm.prefixCls + '-fixed-right-header'], style: _vm.fixedRightHeaderStyle }) : _vm._e(), _vm._v(" "), _vm.showSlotFooter ? _c('div', { ref: "footer", class: [_vm.prefixCls + '-footer'] }, [_vm._t("footer")], 2) : _vm._e()]), _vm._v(" "), _vm.loading ? _c('Spin', { attrs: { "fix": "", "size": "large" } }, [_vm._t("loading")], 2) : _vm._e()], 1);
+  var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('div', { class: _vm.wrapClasses, style: _vm.styles }, [_c('div', { class: _vm.classes }, [_vm.showSlotHeader ? _c('div', { ref: "title", class: [_vm.prefixCls + '-title'] }, [_vm._t("header")], 2) : _vm._e(), _vm._v(" "), _vm.showHeader ? _c('div', { ref: "header", class: [_vm.prefixCls + '-header'], on: { "mousewheel": _vm.handleMouseWheel } }, [_c('table-head', { attrs: { "prefix-cls": _vm.prefixCls, "styleObject": _vm.tableHeaderStyle, "columns": _vm.cloneColumns, "column-rows": _vm.columnRows, "obj-data": _vm.objData, "columns-height": _vm.columnsHeight, "data": _vm.rebuildData } })], 1) : _vm._e(), _vm._v(" "), _c('div', { directives: [{ name: "show", rawName: "v-show", value: !(!!_vm.localeNoDataText && (!_vm.data || _vm.data.length === 0) || !!_vm.localeNoFilteredDataText && (!_vm.rebuildData || _vm.rebuildData.length === 0)), expression: "!((!!localeNoDataText && (!data || data.length === 0)) || (!!localeNoFilteredDataText && (!rebuildData || rebuildData.length === 0)))" }], ref: "body", class: [_vm.prefixCls + '-body'], style: _vm.bodyStyle, on: { "scroll": _vm.handleBodyScroll } }, [_c('table-body', { ref: "tbody", attrs: { "prefix-cls": _vm.prefixCls, "styleObject": _vm.tableStyle, "columns": _vm.cloneColumns, "data": _vm.rebuildData, "columns-height": _vm.columnsHeight, "obj-data": _vm.objData } })], 1), _vm._v(" "), _c('div', { directives: [{ name: "show", rawName: "v-show", value: !!_vm.localeNoDataText && (!_vm.data || _vm.data.length === 0) || !!_vm.localeNoFilteredDataText && (!_vm.rebuildData || _vm.rebuildData.length === 0), expression: "((!!localeNoDataText && (!data || data.length === 0)) || (!!localeNoFilteredDataText && (!rebuildData || rebuildData.length === 0)))" }], class: [_vm.prefixCls + '-tip'], style: _vm.bodyStyle, on: { "scroll": _vm.handleBodyScroll } }, [_c('table', { attrs: { "cellspacing": "0", "cellpadding": "0", "border": "0" } }, [_c('tbody', [_c('tr', [_c('td', { style: { 'height': this.headerHeight + "px", 'width': _vm.bodyStyle.width } }, [!_vm.data || _vm.data.length === 0 ? _c('span', { domProps: { "innerHTML": _vm._s(_vm.localeNoDataText) } }) : _c('span', { domProps: { "innerHTML": _vm._s(_vm.localeNoFilteredDataText) } })])])])])]), _vm._v(" "), _vm.isLeftFixed ? _c('div', { class: [_vm.prefixCls + '-fixed'], style: _vm.fixedTableStyle }, [_vm.showHeader ? _c('div', { class: _vm.fixedHeaderClasses }, [_c('table-head', { attrs: { "fixed": "left", "prefix-cls": _vm.prefixCls, "styleObject": _vm.fixedTableStyle, "columns": _vm.leftFixedColumns, "column-rows": _vm.columnRows, "fixed-column-rows": _vm.leftFixedColumnRows, "obj-data": _vm.objData, "columns-height": _vm.columnsHeight, "data": _vm.rebuildData } })], 1) : _vm._e(), _vm._v(" "), _c('div', { ref: "fixedBody", class: [_vm.prefixCls + '-fixed-body'], style: _vm.fixedBodyStyle, on: { "mousewheel": _vm.handleFixedMousewheel, "DOMMouseScroll": _vm.handleFixedMousewheel } }, [_c('table-body', { attrs: { "fixed": "left", "prefix-cls": _vm.prefixCls, "styleObject": _vm.fixedTableStyle, "columns": _vm.leftFixedColumns, "data": _vm.rebuildData, "columns-height": _vm.columnsHeight, "obj-data": _vm.objData } })], 1)]) : _vm._e(), _vm._v(" "), _vm.isRightFixed ? _c('div', { class: [_vm.prefixCls + '-fixed-right'], style: _vm.fixedRightTableStyle }, [_vm.showHeader ? _c('div', { class: _vm.fixedHeaderClasses }, [_c('table-head', { attrs: { "fixed": "right", "prefix-cls": _vm.prefixCls, "styleObject": _vm.fixedRightTableStyle, "columns": _vm.rightFixedColumns, "column-rows": _vm.columnRows, "fixed-column-rows": _vm.rightFixedColumnRows, "obj-data": _vm.objData, "columns-height": _vm.columnsHeight, "data": _vm.rebuildData } })], 1) : _vm._e(), _vm._v(" "), _c('div', { ref: "fixedRightBody", class: [_vm.prefixCls + '-fixed-body'], style: _vm.fixedBodyStyle, on: { "mousewheel": _vm.handleFixedMousewheel, "DOMMouseScroll": _vm.handleFixedMousewheel } }, [_c('table-body', { attrs: { "fixed": "right", "prefix-cls": _vm.prefixCls, "styleObject": _vm.fixedRightTableStyle, "columns": _vm.rightFixedColumns, "data": _vm.rebuildData, "columns-height": _vm.columnsHeight, "obj-data": _vm.objData } })], 1)]) : _vm._e(), _vm._v(" "), _vm.isRightFixed ? _c('div', { class: [_vm.prefixCls + '-fixed-right-header'], style: _vm.fixedRightHeaderStyle }) : _vm._e(), _vm._v(" "), _vm.showSlotFooter ? _c('div', { ref: "footer", class: [_vm.prefixCls + '-footer'] }, [_vm._t("footer")], 2) : _vm._e()]), _vm._v(" "), _vm.loading ? _c('Spin', { attrs: { "fix": "", "size": "large" } }, [_vm._t("loading")], 2) : _vm._e()], 1);
 };
 var staticRenderFns = [];
 exports.render = render;

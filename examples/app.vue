@@ -75,7 +75,7 @@ nav {
                     {name:'Transfer',to:'/transfer',accomplish:true,},
                     {name:'Date',to:'/date',accomplish:false,},
                     {name:'Form',to:'/form',accomplish:true,},
-                    {name:'Table',to:'/table',accomplish:false,},
+                    {name:'Table',to:'/table',accomplish:true,},
                     {name:'LoadingBar',to:'/loading-bar',accomplish:true,},
                     {name:'Modal',to:'/modal',accomplish:true,},
                     {name:'Message',to:'/message',accomplish:true,},

@@ -1,9 +1,9 @@
 // sortable
 .sortable() {
     display: inline-block;
-    width: 14px;
-    height: 12px;
-    margin-top: -1px;
+    width: 12px;
+    height: 14px;
+    margin-left: -1px;
     vertical-align: middle;
     overflow: hidden;
     cursor: pointer;
@@ -11,7 +11,7 @@
 
     i {
         display: block;
-        height: 6px;
+        width: 6px;
         line-height: 6px;
         overflow: hidden;
         position: absolute;
@@ -28,10 +28,10 @@
         }
 
         &:first-child{
-            top: 0;
+            left: 0;
         }
         &:last-child{
-            bottom: 0;
+            right: 0;
         }
     }
 }

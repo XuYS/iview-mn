@@ -1,4 +1,5 @@
 <template>
+<div>
     <div style="margin: 10px">
         Display border <i-switch v-model="showBorder" style="margin-right: 5px"></i-switch>
         Display stripe <i-switch v-model="showStripe" style="margin-right: 5px"></i-switch>
@@ -14,10 +15,9 @@
             <Radio label="default">medium(default)</Radio>
             <Radio label="small">small</Radio>
         </Radio-group>
-        <br>
-        <br>
-        <Table :border="showBorder" :stripe="showStripe" :show-header="showHeader" :height="fixedHeader ? 250 : ''" :size="tableSize" :data="tableData3" :columns="tableColumns3"></Table>
     </div>
+    <Table :border="showBorder" :stripe="showStripe" :show-header="showHeader" :width="fixedHeader ? 250 : ''" :size="tableSize" :data="tableData3" :columns="tableColumns3"></Table>
+</div>
 </template>
 <script>
     export default {
@@ -88,14 +88,14 @@
                 if (this.showCheckbox) {
                     columns.push({
                         type: 'selection',
-                        width: 60,
+                        height: 60,
                         align: 'center'
                     })
                 }
                 if (this.showIndex) {
                     columns.push({
                         type: 'index',
-                        width: 60,
+                        height: 60,
                         align: 'center'
                     })
                 }

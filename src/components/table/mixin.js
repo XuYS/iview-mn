@@ -26,6 +26,16 @@ export default {
             }
             if (width === '0') width = '';
             return width;
+        },
+        setCellHeight (column) {
+            let height = '';
+            if (column.height) {
+                height = column.height;
+            } else if (this.columnsHeight[column._index]) {
+                height = this.columnsHeight[column._index].height;
+            }
+            if (height === '0') height = '';
+            return height;
         }
     }
 };

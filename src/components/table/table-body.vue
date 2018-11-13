@@ -1,7 +1,7 @@
 <template>
     <table cellspacing="0" cellpadding="0" border="0" :style="styleObject">
         <colgroup>
-            <col v-for="(column, index) in columns" :height="setCellWidth(column)">
+            <col v-for="(column, index) in columns" :height="setCellHeight(column)">
         </colgroup>
         <tbody :class="[prefixCls + '-tbody']">
             <template v-for="(row, index) in data">
@@ -54,7 +54,7 @@
             columns: Array,
             data: Array,    // rebuildData
             objData: Object,
-            columnsWidth: Object,
+            columnsHeight: Object,
             fixed: {
                 type: [Boolean, String],
                 default: false
@@ -96,6 +96,8 @@
             dblclickCurrentRow (_index) {
                 this.$parent.dblclickCurrentRow(_index);
             }
+        },
+        created(){
         }
     };
 </script>

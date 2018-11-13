@@ -61,10 +61,12 @@
     &-title, &-footer{
         height: 48px;
         line-height: 48px;
-        border-bottom: 1px solid @border-color-split;
+        // border-bottom: 1px solid @border-color-split;
+        border-right: 1px solid @border-color-split;
     }
     &-footer{
-        border-bottom: none;
+        // border-bottom: none;
+        border-right: none;
     }
 
     &-header{
@@ -92,7 +94,8 @@
             border-top: 1px solid @border-color-base;
         }
         tbody tr:last-child td{
-            border-bottom: none;
+            // border-bottom: none;
+            border-right: none;
         }
     }
 
@@ -105,8 +108,10 @@
         text-overflow: ellipsis;
         vertical-align: middle;
         //position: relative;
+        // border-right: 1px solid @border-color-split;
+        // border-bottom: 1px solid @border-color-split;
+        // border-bottom: 1px solid @border-color-split;
         border-right: 1px solid @border-color-split;
-        border-bottom: 1px solid @border-color-split;
     }
 
     th {
@@ -140,7 +145,8 @@
     }
     &-border{
         th,td{
-            border-right: 1px solid @border-color-split;
+            // border-right: 1px solid @border-color-split;
+            border-bottom: 1px solid @border-color-split;
         }
     }
     &-cell{
@@ -286,9 +292,9 @@
 
     &-fixed, &-fixed-right{
         position: absolute;
-        top: 0;
+        top: auto;
         left: 0;
-        box-shadow: 2px 0 6px -2px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.2);
 
         &::before {
             content: '';
@@ -297,20 +303,20 @@
             background-color: @border-color-base;
             position: absolute;
             left: 0;
-            bottom: 0;
+            top: 0;
             z-index: 4;
         }
     }
     &-fixed-right{
-        top: 0;
-        left: auto;
-        right: 0;
-        box-shadow: -2px 0 6px -2px rgba(0, 0, 0, 0.2);
+        bottom: 0;
+        left: 0;
+        right: auto;
+        box-shadow: 0 -2px 6px -2px rgba(0, 0, 0, 0.2);
     }
     &-fixed-right-header{
         position: absolute;
-        top: -1px;
-        right: 0;
+        bottom: -1px;
+        left: 0;
         background-color: @table-thead-bg;
         border-top: 1px solid @border-color-base;
         border-bottom: 1px solid @border-color-split;

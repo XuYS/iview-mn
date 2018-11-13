@@ -1,7 +1,7 @@
 <template>
     <table cellspacing="0" cellpadding="0" border="0" :style="styles">
         <colgroup>
-            <col v-for="(column, index) in columns" :height="setCellWidth(column)">
+            <col v-for="(column, index) in columns" :height="setCellHeight(column)">
             <col v-if="$parent.showVerticalScrollBar" :height="$parent.scrollBarWidth"/>
         </colgroup>
         <thead>
@@ -21,8 +21,8 @@
                             <span v-if="!column.renderHeader" :class="{[prefixCls + '-cell-sort']: column.sortable}" @click="handleSortByHead(getColumn(rowIndex, index)._index)">{{ column.title || '#' }}</span>
                             <render-header v-else :render="column.renderHeader" :column="column" :index="index"></render-header>
                             <span :class="[prefixCls + '-sort']" v-if="column.sortable">
-                                <i class="ivu-icon ivu-icon-md-arrow-dropup" :class="{on: getColumn(rowIndex, index)._sortType === 'asc'}" @click="handleSort(getColumn(rowIndex, index)._index, 'asc')"></i>
-                                <i class="ivu-icon ivu-icon-md-arrow-dropdown" :class="{on: getColumn(rowIndex, index)._sortType === 'desc'}" @click="handleSort(getColumn(rowIndex, index)._index, 'desc')"></i>
+                                <i class="ivu-icon ivu-icon-md-arrow-dropleft" :class="{on: getColumn(rowIndex, index)._sortType === 'asc'}" @click="handleSort(getColumn(rowIndex, index)._index, 'asc')"></i>
+                                <i class="ivu-icon ivu-icon-md-arrow-dropright" :class="{on: getColumn(rowIndex, index)._sortType === 'desc'}" @click="handleSort(getColumn(rowIndex, index)._index, 'desc')"></i>
                             </span>
                             <Poptip
                                 v-if="isPopperShow(column)"
@@ -86,7 +86,7 @@
             columns: Array,
             objData: Object,
             data: Array,    // rebuildData
-            columnsWidth: Object,
+            columnsHeight: Object,
             fixed: {
                 type: [Boolean, String],
                 default: false
