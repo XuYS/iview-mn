@@ -1,39 +1,59 @@
+<style>
+    .demo-tabs-style1 > .ivu-tabs-card > .ivu-tabs-content {
+        height: 120px;
+        margin-top: -16px;
+    }
+
+    .demo-tabs-style1 > .ivu-tabs-card > .ivu-tabs-content > .ivu-tabs-tabpane {
+        background: #fff;
+        padding: 16px;
+    }
+
+    .demo-tabs-style1 > .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab {
+        border-color: transparent;
+    }
+
+    .demo-tabs-style1 > .ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab-active {
+        border-color: #fff;
+    }
+    .demo-tabs-style2 > .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab{
+        border-radius: 0;
+        background: #fff;
+    }
+    .demo-tabs-style2 > .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab-active{
+        border-top: 1px solid #3399ff;
+    }
+    .demo-tabs-style2 > .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab-active:before{
+        content: '';
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: #3399ff;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+</style>
 <template>
-    <Tabs type="card" closable @on-tab-remove="handleTabRemove" :beforeRemove="handleBeforeRemove">
-        <TabPane label="标签一" v-if="tab0">标签一的内容</TabPane>
-        <TabPane label="标签二" v-if="tab1">标签二的内容</TabPane>
-        <TabPane label="标签三" v-if="tab2">标签三的内容</TabPane>
-    </Tabs>
+    <Row :gutter="32">
+        <Col span="12" class="demo-tabs-style1" style="background: #e3e8ee;padding:16px;">
+            <Tabs type="card">
+                <TabPane label="标签一">标签一的内容</TabPane>
+                <TabPane label="标签二">标签二的内容</TabPane>
+                <TabPane label="标签三">标签三的内容</TabPane>
+            </Tabs>
+        </Col>
+        <Col span="12" class="demo-tabs-style2">
+            <Tabs type="card">
+                <TabPane label="标签一">标签一的内容</TabPane>
+                <TabPane label="标签二">标签二的内容</TabPane>
+                <TabPane label="标签三">标签三的内容</TabPane>
+            </Tabs>
+        </Col>
+    </Row>
 </template>
 <script>
     export default {
-        data () {
-            return {
-                tab0: true,
-                tab1: true,
-                tab2: true
-            }
-        },
-        methods: {
-            handleTabRemove (name) {
-                this['tab' + name] = false;
-            },
-            handleBeforeRemove (index) {
-                console.log(index);
-
-                return new Promise((resolve, reject) => {
-                    this.$Modal.confirm({
-                        title: 'Title',
-                        content: '<p>Content of dialog</p><p>Content of dialog</p>',
-                        onOk: () => {
-                            resolve();
-                        },
-                        onCancel: () => {
-                            reject();
-                        }
-                    });
-                });
-            }
-        }
+        
     }
 </script>

@@ -99,6 +99,7 @@
                 prefixCls: prefixCls,
                 navList: [],
                 barWidth: 0,
+                barHeight: 0,
                 barOffset: 0,
                 activeKey: this.value,
                 focusedKey: this.value,
@@ -144,7 +145,7 @@
                 let style = {};
                 if (x > -1) {
                     style = {
-                        transform: `translateX(${p}) translateZ(0px)`
+                        transform: `translateY(${p}) translateZ(0px)`
                     };
                 }
                 return style;
@@ -152,13 +153,13 @@
             barStyle () {
                 let style = {
                     visibility: 'hidden',
-                    width: `${this.barWidth}px`
+                    height: `${this.barHeight}px`
                 };
                 if (this.type === 'line') style.visibility = 'visible';
                 if (this.animated) {
-                    style.transform = `translate3d(${this.barOffset}px, 0px, 0px)`;
+                    style.transform = `translate3d(0px, ${this.barOffset}px,  0px)`;
                 } else {
-                    style.left = `${this.barOffset}px`;
+                    style.top = `${this.barOffset}px`;
                 }
 
                 return style;
@@ -193,13 +194,13 @@
                     if (!this.$refs.nav) return;  // 页面销毁时，这里会报错，为了解决 #2100
                     const prevTabs = this.$refs.nav.querySelectorAll(`.${prefixCls}-tab`);
                     const tab = prevTabs[index];
-                    this.barWidth = tab ? parseFloat(tab.offsetWidth) : 0;
+                    this.barHeight = tab ? parseFloat(tab.offsetHeight) : 0;
 
                     if (index > 0) {
                         let offset = 0;
                         const gutter = this.size === 'small' ? 0 : 16;
                         for (let i = 0; i < index; i++) {
-                            offset += parseFloat(prevTabs[i].offsetWidth) + gutter;
+                            offset += parseFloat(prevTabs[i].offsetHeight) + gutter;
                         }
 
                         this.barOffset = offset;

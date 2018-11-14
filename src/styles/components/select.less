@@ -43,7 +43,7 @@
         }
 
         .@{select-prefix-cls}-arrow {
-            transform: rotate(-90deg);
+            transform: rotate(0deg);
             display: inline-block;
         }
     }
@@ -77,7 +77,7 @@
 
         .@{select-prefix-cls}-placeholder, .@{select-prefix-cls}-selected-value{
             display: block;
-            height: @input-height-base - 2px;
+            width: @input-height-base - 2px;
             line-height: @input-width-base - 2px;
             font-size: @font-size-small;
             overflow: hidden;
@@ -131,7 +131,7 @@
         border-radius: @btn-border-radius-small;
 
         .@{select-prefix-cls}-placeholder, .@{select-prefix-cls}-selected-value{
-            height: @input-height-small - 2px;
+            width: @input-height-small - 2px;
             line-height: @input-height-small - 2px;
         }
     }
@@ -266,8 +266,8 @@
         content: '\F171';
         color: @selected-color;
         position: absolute;
-        left: 50%;
-        bottom: 8px;
+        left: 45%;
+        bottom: 3px;
         margin-left: -12px;
     }
 }

@@ -8,7 +8,7 @@
 
 .@{input-number-prefix-cls} {
     @radius-wrap: 0 @btn-border-radius @btn-border-radius 0;
-
+    display: table-cell;
     .input;
     margin: 0;
     padding: 0;
@@ -27,7 +27,7 @@
         border-radius: @radius-wrap;
         background: #fff;
         position: absolute;
-        top: 0;
+        bottom: 0;
         right: 0;
         opacity: 0;
         transition: opacity @transition-time @ease-in-out;
@@ -45,8 +45,8 @@
     }
 
     &-handler-down {
-        border-top: 1px solid @border-color-base;
-        top: -1px;
+        border-left: 1px solid @border-color-base;
+        left: -1px;
         cursor: pointer;
     }
 
@@ -75,7 +75,8 @@
         color: #999;
         user-select: none;
         position: absolute;
-        right: 5px;
+        left: 3px;
+        top: 4px;
         transition: all @transition-time linear;
     }
 
@@ -97,10 +98,11 @@
     }
 
     &-input {
+        display: table-cell;
         height: 100%;
         width: @input-width-base;
         line-height: @input-width-base;
-        padding: 0 7px;
+        padding: 7px 0;
         text-align: left;
         outline: 0;
         -moz-appearance: textfield;

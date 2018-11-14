@@ -164,7 +164,7 @@
                 ];
             },
             innerUpClasses () {
-                return `${prefixCls}-handler-up-inner ${iconPrefixCls} ${iconPrefixCls}-ios-arrow-up`;
+                return `${prefixCls}-handler-up-inner ${iconPrefixCls} ${iconPrefixCls}-ios-arrow-back`;
             },
             downClasses () {
                 return [
@@ -176,7 +176,7 @@
                 ];
             },
             innerDownClasses () {
-                return `${prefixCls}-handler-down-inner ${iconPrefixCls} ${iconPrefixCls}-ios-arrow-down`;
+                return `${prefixCls}-handler-down-inner ${iconPrefixCls} ${iconPrefixCls}-ios-arrow-forward`;
             },
             inputWrapClasses () {
                 return `${prefixCls}-input-wrap`;

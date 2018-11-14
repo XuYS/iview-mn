@@ -17,7 +17,7 @@
         min-width: @btn-circle-size;
         height: @btn-circle-size;
         line-height: @btn-circle-size - 2px;
-        margin-right: 4px;
+        margin-bottom: 4px;
         text-align: center;
         list-style: none;
         background-color: #fff;
@@ -77,27 +77,29 @@
         }
     }
 
-    &-item-jump-prev:hover {
+    &-item-jump-prev {
         i:after {
-            content: "\F115";
-            margin-left: -8px;
+            content: "\F124";
+            margin-top: -8px;
         }
     }
 
-    &-item-jump-next:hover {
+    &-item-jump-next {
+        i:before {
+            margin-bottom: -8px;
+        }
         i:after {
-            content: "\F11F";
-            margin-left: -8px;
+            content: "\F116";
         }
     }
 
     &-prev{
-        margin-right: 4px;
+        margin-bottom: 4px;
     }
 
     &-item-jump-prev,
     &-item-jump-next{
-        margin-right: 4px;
+        margin-bottom: 4px;
     }
 
     &-prev,
@@ -108,8 +110,8 @@
         vertical-align: middle;
         user-select: none;
         //float: left;
-        min-width: @btn-circle-size;
-        height: @btn-circle-size;
+        width: @btn-circle-size;
+        min-height: @btn-circle-size;
         line-height: @btn-circle-size - 2px;
         list-style: none;
         text-align: center;
@@ -161,25 +163,27 @@
         display: inline-block;
         vertical-align: middle;
         //float: left;
-        margin-left: 15px;
+        margin-top: 15px;
         &-sizer {
             display: inline-block;
             //float: left;
-            margin-right: 10px;
+            margin-bottom: 10px;
         }
 
         &-elevator {
             display: inline-block;
             vertical-align: middle;
             //float: left;
-            height: @btn-circle-size;
+            width: @btn-circle-size;
             line-height: @btn-circle-size;
 
             input {
                 .input;
+                width: 32px;
+                display: table-cell;
                 border-radius: @btn-border-radius;
-                margin: 0 8px;
-                width: 50px;
+                margin: 8px 0;
+                height: 50px;
             }
         }
     }
@@ -187,7 +191,7 @@
     &-total {
         display: inline-block;
         //float: left;
-        height: @btn-circle-size;
+        width: @btn-circle-size;
         line-height: @btn-circle-size;
         margin-right: 10px;
     }
@@ -196,7 +200,7 @@
     &-simple &-next {
         margin: 0;
         border: 0;
-        height: 24px;
+        width: 24px;
         line-height: normal;
         font-size: 18px;
     }
@@ -204,13 +208,14 @@
     &-simple &-simple-pager {
         display: inline-block;
         //float: left;
-        margin-right: 8px;
+        margin-bottom: 8px;
         vertical-align: middle;
 
         input {
+            display: table-cell;
             width: 30px;
             height: 24px;
-            margin: 0 8px;
+            margin: 8px 0;
             padding: 5px 8px;
             text-align: center;
             box-sizing: border-box;
@@ -237,15 +242,15 @@
 
 .@{page-prefix-cls} {
     &.mini &-total {
-        height: @btn-circle-size-small;
+        width: @btn-circle-size-small;
         line-height: @btn-circle-size-small;
     }
 
     &.mini &-item {
         border: 0;
         margin: 0;
-        min-width: @btn-circle-size-small;
-        height: @btn-circle-size-small;
+        min-height: @btn-circle-size-small;
+        width: @btn-circle-size-small;
         line-height: @btn-circle-size-small;
         border-radius: @btn-border-radius-small;
     }
@@ -253,14 +258,14 @@
     &.mini &-prev,
     &.mini &-next {
         margin: 0;
-        min-width: @btn-circle-size-small;
-        height: @btn-circle-size-small;
+        min-height: @btn-circle-size-small;
+        width: @btn-circle-size-small;
         line-height: @btn-circle-size-small - 2px;
         border: 0;
 
         a {
             i:after {
-                height: @btn-circle-size-small;
+                width: @btn-circle-size-small;
                 line-height: @btn-circle-size-small;
             }
         }
@@ -268,21 +273,21 @@
 
     &.mini &-item-jump-prev,
     &.mini &-item-jump-next {
-        height: @btn-circle-size-small;
+        width: @btn-circle-size-small;
         line-height: @btn-circle-size-small;
         border: none;
         margin-right: 0;
     }
 
     &.mini &-options {
-        margin-left: 8px;
+        margin-top: 8px;
         &-elevator {
-            height: @btn-circle-size-small;
+            width: @btn-circle-size-small;
             line-height: @btn-circle-size-small;
 
             input {
                 .input-small;
-                width: 44px;
+                height: 44px;
             }
         }
     }
