@@ -26,7 +26,7 @@ nav {
                 </li>
             </ul>
         </nav>
-        <div class="ui-components mgl">
+        <div class="ui-components mgl" style="height:80%;">
             <router-view></router-view>
         </div>
     </div>
@@ -60,9 +60,9 @@ nav {
                     {name:'Tree',to:'/tree',accomplish:true,},
                     {name:'Rate',to:'/rate',accomplish:true,},
                     {name:'Circle',to:'/circle',accomplish:false,},
-                    {name:'Tabs',to:'/tabs',accomplish:false,},
-                    {name:'Tooltip',to:'/tooltip',accomplish:false,},
-                    {name:'Poptip',to:'/poptip',accomplish:false,},
+                    {name:'Tabs',to:'/tabs',accomplish:true,},
+                    {name:'Tooltip',to:'/tooltip',accomplish:true,},
+                    {name:'Poptip',to:'/poptip',accomplish:true,},
                     {name:'Slider',to:'/slider',accomplish:false,},
                     {name:'Dropdown',to:'/dropdown',accomplish:false,},
                     {name:'Breadcrumb',to:'/breadcrumb',accomplish:true,},

@@ -74,6 +74,9 @@
             },
             maxWidth: {
                 type: [String, Number]
+            },
+            maxHeight: {
+                type: [String, Number]
             }
         },
         data () {
@@ -86,6 +89,7 @@
             innerStyles () {
                 const styles = {};
                 if (this.maxWidth) styles['max-width'] = `${this.maxWidth}px`;
+                if (this.maxHeight) styles['max-height'] = `${this.maxHeight}px`;
                 return styles;
             },
             innerClasses () {

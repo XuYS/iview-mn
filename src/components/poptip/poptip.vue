@@ -85,6 +85,9 @@
             width: {
                 type: [String, Number]
             },
+            height: {
+                type: [String, Number]
+            },
             confirm: {
                 type: Boolean,
                 default: false
@@ -146,6 +149,10 @@
                 if (this.width) {
                     style.width = `${this.width}px`;
                 }
+                if (this.height) {
+                    style.height = `${this.height}px`;
+                }
+
 
                 if (this.transfer) style['z-index'] = 1060 + this.tIndex;
 

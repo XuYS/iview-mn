@@ -18,7 +18,7 @@
                 <div
                     :class="[prefixCls + '-stop']"
                     v-for="item in stops"
-                    :style="{ 'left': item + '%' }"
+                    :style="{ 'top': item + '%' }"
                     @click.self="sliderClick"
                 ></div>
             </template>
@@ -28,7 +28,7 @@
                 @click.self="sliderClick"></div>
             <div
                 :class="[prefixCls + '-button-wrap']"
-                :style="{left: minPosition + '%'}"
+                :style="{top: `calc(${minPosition}% - 8px)`}"
                 @touchstart="onPointerDown($event, 'min')"
                 @mousedown="onPointerDown($event, 'min')">
                 <Tooltip
@@ -44,16 +44,16 @@
                         tabindex="0"
                         @focus="handleFocus('min')"
                         @blur="handleBlur('min')"
-                        @keydown.left="onKeyLeft($event, 'min')"
+                        @keydown.left="onKeyRight($event, 'min')"
                         @keydown.down="onKeyLeft($event, 'min')"
                         @keydown.right="onKeyRight($event, 'min')"
-                        @keydown.up="onKeyRight($event, 'min')"
+                        @keydown.up="onKeyLeft($event, 'min')"
                     ></div>
                 </Tooltip>
             </div>
             <div v-if="range"
                  :class="[prefixCls + '-button-wrap']"
-                 :style="{left: maxPosition + '%'}"
+                 :style="{top: `calc(${maxPosition}% - 8px)`}"
                  @touchstart="onPointerDown($event, 'max')"
                  @mousedown="onPointerDown($event, 'max')">
                 <Tooltip
@@ -69,10 +69,10 @@
                         tabindex="0"
                         @focus="handleFocus('max')"
                         @blur="handleBlur('max')"
-                        @keydown.left="onKeyLeft($event, 'max')"
+                        @keydown.left="onKeyRight($event, 'max')"
                         @keydown.down="onKeyLeft($event, 'max')"
                         @keydown.right="onKeyRight($event, 'max')"
-                        @keydown.up="onKeyRight($event, 'max')"
+                        @keydown.up="onKeyLeft($event, 'max')"
                     ></div>
                 </Tooltip>
             </div>
@@ -227,12 +227,12 @@
             },
             barStyle () {
                 const style = {
-                    width: (this.currentValue[0] - this.min) / this.valueRange * 100 + '%'
+                    height: (this.currentValue[0] - this.min) / this.valueRange * 100 + '%'
                 };
 
                 if (this.range) {
-                    style.left = (this.currentValue[0] - this.min) / this.valueRange * 100 + '%';
-                    style.width = (this.currentValue[1] - this.currentValue[0]) / this.valueRange * 100 + '%';
+                    style.top = (this.currentValue[0] - this.min) / this.valueRange * 100 + '%';
+                    style.height = (this.currentValue[1] - this.currentValue[0]) / this.valueRange * 100 + '%';
                 }
 
                 return style;
@@ -247,7 +247,7 @@
                 return result;
             },
             sliderWidth () {
-                return parseInt(getStyle(this.$refs.slider, 'width'), 10);
+                return parseInt(getStyle(this.$refs.slider, 'height'), 10);
             },
             tipDisabled () {
                 return this.tipFormat(this.currentValue[0]) === null || this.showTip === 'never';
@@ -293,6 +293,7 @@
                 }
             },
             onPointerDown (event, type) {
+                console.log(event,type)
                 if (this.disabled) return;
                 event.preventDefault();
                 this.pointerDown = type;
@@ -309,6 +310,7 @@
                 this.startPos = (this[`${this.pointerDown}Position`] * this.valueRange / 100) + this.min;
             },
             onPointerDrag (event) {
+                console.log(event)
                 this.dragging = true;
                 this.$refs[`${this.pointerDown}Tooltip`].visible = true;
                 this.currentX = this.getPointerX(event);
@@ -368,9 +370,10 @@
             },
 
             sliderClick (event) {
+                console.log(event)
                 if (this.disabled) return;
                 const currentX = this.getPointerX(event);
-                const sliderOffsetLeft = this.$refs.slider.getBoundingClientRect().left;
+                const sliderOffsetLeft = this.$refs.slider.getBoundingClientRect().top;
                 let newPos = ((currentX - sliderOffsetLeft) / this.sliderWidth * this.valueRange) + this.min;
 
                 if (!this.range || newPos <= this.minPosition) this.changeButtonPosition(newPos, 'min');

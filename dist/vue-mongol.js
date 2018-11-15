@@ -3034,8 +3034,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_tooltip_vue__ = __webpack_require__(208);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_tooltip_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_tooltip_vue__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_tooltip_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_tooltip_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_74763aea_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_tooltip_vue__ = __webpack_require__(504);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_74763aea_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_tooltip_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_74763aea_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_tooltip_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_2420877d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_tooltip_vue__ = __webpack_require__(504);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_2420877d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_tooltip_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_2420877d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_tooltip_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(0);
 /* script */
 
@@ -3053,8 +3053,8 @@ var __vue_module_identifier__ = null
 
 var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_tooltip_vue___default.a,
-  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_74763aea_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_tooltip_vue__["render"],
-  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_74763aea_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_tooltip_vue__["staticRenderFns"],
+  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_2420877d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_tooltip_vue__["render"],
+  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_2420877d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_tooltip_vue__["staticRenderFns"],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -19828,8 +19828,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_poptip_vue__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_poptip_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_poptip_vue__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_poptip_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_poptip_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_f8e33d8a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_poptip_vue__ = __webpack_require__(490);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_f8e33d8a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_poptip_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_f8e33d8a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_poptip_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_02346d0f_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_poptip_vue__ = __webpack_require__(490);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_02346d0f_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_poptip_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_02346d0f_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_poptip_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(0);
 /* script */
 
@@ -19847,8 +19847,8 @@ var __vue_module_identifier__ = null
 
 var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_poptip_vue___default.a,
-  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_f8e33d8a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_poptip_vue__["render"],
-  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_f8e33d8a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_poptip_vue__["staticRenderFns"],
+  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_02346d0f_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_poptip_vue__["render"],
+  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_02346d0f_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_poptip_vue__["staticRenderFns"],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -19933,6 +19933,9 @@ exports.default = {
         width: {
             type: [String, Number]
         },
+        height: {
+            type: [String, Number]
+        },
         confirm: {
             type: Boolean,
             default: false
@@ -19985,6 +19988,9 @@ exports.default = {
 
             if (this.width) {
                 style.width = String(this.width) + 'px';
+            }
+            if (this.height) {
+                style.height = String(this.height) + 'px';
             }
 
             if (this.transfer) style['z-index'] = 1060 + this.tIndex;
@@ -21112,12 +21118,12 @@ exports.default = {
         },
         barStyle: function barStyle() {
             var style = {
-                width: (this.currentValue[0] - this.min) / this.valueRange * 100 + '%'
+                height: (this.currentValue[0] - this.min) / this.valueRange * 100 + '%'
             };
 
             if (this.range) {
-                style.left = (this.currentValue[0] - this.min) / this.valueRange * 100 + '%';
-                style.width = (this.currentValue[1] - this.currentValue[0]) / this.valueRange * 100 + '%';
+                style.top = (this.currentValue[0] - this.min) / this.valueRange * 100 + '%';
+                style.height = (this.currentValue[1] - this.currentValue[0]) / this.valueRange * 100 + '%';
             }
 
             return style;
@@ -21132,7 +21138,7 @@ exports.default = {
             return result;
         },
         sliderWidth: function sliderWidth() {
-            return parseInt((0, _assist.getStyle)(this.$refs.slider, 'width'), 10);
+            return parseInt((0, _assist.getStyle)(this.$refs.slider, 'height'), 10);
         },
         tipDisabled: function tipDisabled() {
             return this.tipFormat(this.currentValue[0]) === null || this.showTip === 'never';
@@ -21182,6 +21188,7 @@ exports.default = {
             }
         },
         onPointerDown: function onPointerDown(event, type) {
+            console.log(event, type);
             if (this.disabled) return;
             event.preventDefault();
             this.pointerDown = type;
@@ -21198,6 +21205,7 @@ exports.default = {
             this.startPos = this[String(this.pointerDown) + 'Position'] * this.valueRange / 100 + this.min;
         },
         onPointerDrag: function onPointerDrag(event) {
+            console.log(event);
             this.dragging = true;
             this.$refs[String(this.pointerDown) + 'Tooltip'].visible = true;
             this.currentX = this.getPointerX(event);
@@ -21255,9 +21263,10 @@ exports.default = {
             this.dispatch('FormItem', 'on-form-change', value);
         },
         sliderClick: function sliderClick(event) {
+            console.log(event);
             if (this.disabled) return;
             var currentX = this.getPointerX(event);
-            var sliderOffsetLeft = this.$refs.slider.getBoundingClientRect().left;
+            var sliderOffsetLeft = this.$refs.slider.getBoundingClientRect().top;
             var newPos = (currentX - sliderOffsetLeft) / this.sliderWidth * this.valueRange + this.min;
 
             if (!this.range || newPos <= this.minPosition) this.changeButtonPosition(newPos, 'min');else if (newPos >= this.maxPosition) this.changeButtonPosition(newPos, 'max');else this.changeButtonPosition(newPos, newPos - this.firstPosition <= this.secondPosition - newPos ? 'min' : 'max');
@@ -21379,6 +21388,9 @@ exports.default = {
         },
         maxWidth: {
             type: [String, Number]
+        },
+        maxHeight: {
+            type: [String, Number]
         }
     },
     data: function data() {
@@ -21392,6 +21404,7 @@ exports.default = {
         innerStyles: function innerStyles() {
             var styles = {};
             if (this.maxWidth) styles['max-width'] = String(this.maxWidth) + 'px';
+            if (this.maxHeight) styles['max-height'] = String(this.maxHeight) + 'px';
             return styles;
         },
         innerClasses: function innerClasses() {
@@ -26934,7 +26947,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '0.0.1-rc.15',
+    version: '0.0.1-rc.16',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,
@@ -36969,8 +36982,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_slider_vue__ = __webpack_require__(207);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_slider_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_slider_vue__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_slider_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_slider_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_52550d5a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_slider_vue__ = __webpack_require__(505);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_52550d5a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_slider_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_52550d5a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_slider_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_0b4d622a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_slider_vue__ = __webpack_require__(505);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_0b4d622a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_slider_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_0b4d622a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_slider_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(0);
 /* script */
 
@@ -36988,8 +37001,8 @@ var __vue_module_identifier__ = null
 
 var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_slider_vue___default.a,
-  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_52550d5a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_slider_vue__["render"],
-  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_52550d5a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_slider_vue__["staticRenderFns"],
+  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_0b4d622a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_slider_vue__["render"],
+  __WEBPACK_IMPORTED_MODULE_1__babel_loader_sourceMap_node_modules_vue_loader_lib_template_compiler_index_id_data_v_0b4d622a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_slider_vue__["staticRenderFns"],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -37032,7 +37045,7 @@ var render = function render() {
           return null;
         }return _vm.sliderClick($event);
       } } }, [_c('input', { attrs: { "type": "hidden", "name": _vm.name }, domProps: { "value": _vm.exportValue } }), _vm._v(" "), _vm.showStops ? _vm._l(_vm.stops, function (item) {
-    return _c('div', { class: [_vm.prefixCls + '-stop'], style: { 'left': item + '%' }, on: { "click": function click($event) {
+    return _c('div', { class: [_vm.prefixCls + '-stop'], style: { 'top': item + '%' }, on: { "click": function click($event) {
           if ($event.target !== $event.currentTarget) {
             return null;
           }return _vm.sliderClick($event);
@@ -37041,7 +37054,7 @@ var render = function render() {
         if ($event.target !== $event.currentTarget) {
           return null;
         }return _vm.sliderClick($event);
-      } } }), _vm._v(" "), _c('div', { class: [_vm.prefixCls + '-button-wrap'], style: { left: _vm.minPosition + '%' }, on: { "touchstart": function touchstart($event) {
+      } } }), _vm._v(" "), _c('div', { class: [_vm.prefixCls + '-button-wrap'], style: { top: "calc(" + _vm.minPosition + "% - 8px)" }, on: { "touchstart": function touchstart($event) {
         _vm.onPointerDown($event, 'min');
       }, "mousedown": function mousedown($event) {
         _vm.onPointerDown($event, 'min');
@@ -37054,7 +37067,7 @@ var render = function render() {
           return null;
         }if ('button' in $event && $event.button !== 0) {
           return null;
-        }_vm.onKeyLeft($event, 'min');
+        }_vm.onKeyRight($event, 'min');
       }, function ($event) {
         if (!('button' in $event) && _vm._k($event.keyCode, "down", 40, $event.key, ["Down", "ArrowDown"])) {
           return null;
@@ -37068,8 +37081,8 @@ var render = function render() {
       }, function ($event) {
         if (!('button' in $event) && _vm._k($event.keyCode, "up", 38, $event.key, ["Up", "ArrowUp"])) {
           return null;
-        }_vm.onKeyRight($event, 'min');
-      }] } })])], 1), _vm._v(" "), _vm.range ? _c('div', { class: [_vm.prefixCls + '-button-wrap'], style: { left: _vm.maxPosition + '%' }, on: { "touchstart": function touchstart($event) {
+        }_vm.onKeyLeft($event, 'min');
+      }] } })])], 1), _vm._v(" "), _vm.range ? _c('div', { class: [_vm.prefixCls + '-button-wrap'], style: { top: "calc(" + _vm.maxPosition + "% - 8px)" }, on: { "touchstart": function touchstart($event) {
         _vm.onPointerDown($event, 'max');
       }, "mousedown": function mousedown($event) {
         _vm.onPointerDown($event, 'max');
@@ -37082,7 +37095,7 @@ var render = function render() {
           return null;
         }if ('button' in $event && $event.button !== 0) {
           return null;
-        }_vm.onKeyLeft($event, 'max');
+        }_vm.onKeyRight($event, 'max');
       }, function ($event) {
         if (!('button' in $event) && _vm._k($event.keyCode, "down", 40, $event.key, ["Down", "ArrowDown"])) {
           return null;
@@ -37096,7 +37109,7 @@ var render = function render() {
       }, function ($event) {
         if (!('button' in $event) && _vm._k($event.keyCode, "up", 38, $event.key, ["Up", "ArrowUp"])) {
           return null;
-        }_vm.onKeyRight($event, 'max');
+        }_vm.onKeyLeft($event, 'max');
       }] } })])], 1) : _vm._e()], 2)], 1);
 };
 var staticRenderFns = [];

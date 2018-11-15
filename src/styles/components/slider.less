@@ -3,8 +3,9 @@
 .@{slider-prefix-cls} {
     line-height: normal;
     &-wrap{
-        width: 100%;
-        height: @slider-height;
+        height: 100%;
+        left: 2px;
+        width: @slider-width;
         margin: @slider-margin;
         background-color: @border-color-split;
         border-radius: @btn-border-radius-small;
@@ -14,6 +15,7 @@
     }
 
     &-button-wrap{
+        left: 2px;
         .square(@slider-button-wrap-size);
         text-align: center;
         background-color: transparent;
@@ -55,7 +57,7 @@
     }
 
     &-bar{
-        height: @slider-height;
+        width: @slider-width;
         background: @slider-color;
         border-radius: @btn-border-radius-small;
         position: absolute;
@@ -63,7 +65,7 @@
 
     &-stop{
         position: absolute;
-        .square(@slider-height);
+        .square(@slider-width);
         border-radius: 50%;
         background-color: @slider-disabled-color;
         transform: translateX(-50%);
